@@ -14,7 +14,7 @@ workflows/                  one file per workflow, flat
 runs/                       one file per run
 ```
 
-Copy the two example files to `config.world.md` and `config.harness.md` and fill them in. Both are gitignored.
+Copy the two example files to `config.world.md` and `config.harness.md` and fill them in. Both are gitignored, because they hold real domains and sign-in details. Keep your filled-in copies in a private repo of your own and symlink them in. Run records in `runs/` are public and belong here.
 
 ## Workflows
 
