@@ -1,8 +1,10 @@
 # RealWork
 
-A benchmark for AI assistants doing real business work in real tools.
+A simple benchmark for AI assistants doing real business work in real tools.
 
-Each workflow is a task a real employee would give an assistant. Each pass condition is checked in a real service. The assistant under test is a harness. Avi is the first. It runs against an employer, a test company on a real domain with real accounts, and any harness that can be connected to that employer can run the same workflows.
+Simple means: every file is markdown, there is no runner, no schema, no harness code, and no simulated apps. A workflow is a task written the way an employee would say it, plus a plain-English list of what must be true afterwards. You give the task to the assistant, look in the real Gmail or Calendar, and mark pass or fail. Anyone with a test company and an afternoon can run it.
+
+Each pass condition is checked in a real service. The assistant under test is a harness. Avi is the first. It runs against an employer, a test company on a real domain with real accounts, and any harness that can be connected to that employer can run the same workflows.
 
 ```
 README.md                   everything: rules, setup, how to run, guidelines
