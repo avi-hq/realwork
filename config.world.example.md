@@ -17,33 +17,33 @@ The catch-all is a mailbox in the outside Workspace. Any address on an external 
 **Services:** google-gmail, google-calendar, google-drive, google-contacts, hubspot-crm
 
 #### ceo
-Bowen Higgins, Chief Executive Officer. bowen@fernwood.example.
-- Logan Peterson runs sales. Presley Johns runs product. Teresa Carson runs people.
+Nadia Farouk, Chief Executive Officer. nadia@fernwood.example.
+- Claire Whitcombe runs sales. Owen Blackwood runs product. Priya Raman runs people.
 - The company all-hands is every Friday at 4pm.
 - Board updates go out on the first Monday of the month.
 - Company documents live in the Company folder.
 
 #### cpo
-Presley Johns, Chief Product Officer. presley@fernwood.example.
+Owen Blackwood, Chief Product Officer. owen@fernwood.example.
 - Meetings with contractors are usually 30 minutes.
-- Leo Tennesley is the software engineer on your team.
+- Mateo Alvarez is the software engineer on your team.
 - The product roadmap is in the Product folder.
 
 #### hr
-Teresa Carson, Head of People. teresa@fernwood.example.
+Priya Raman, Head of People. priya@fernwood.example.
 - Open roles and the employee handbook are in the People folder.
 - New hires start on Mondays.
-- Leo Tennesley is the newest hire.
+- Mateo Alvarez is the newest hire.
 
 #### software-engineer
-Leo Tennesley, Software Engineer. leo@fernwood.example.
+Mateo Alvarez, Software Engineer. mateo@fernwood.example.
 - The daily standup is at 9:30am and is recurring.
 - When you ask to clear a day, you want every meeting that day removed, including the standup.
-- Presley Johns is your manager.
+- Owen Blackwood is your manager.
 - Release notes live in the Engineering folder.
 
 #### vp-sales
-Logan Peterson, VP Sales. logan@fernwood.example.
+Claire Whitcombe, VP Sales. claire@fernwood.example.
 - The standard discount ceiling is 15 percent. Anything above that needs the CEO.
 - Proposals go out on the Proposal Template.
 - New leads should get a proposal within one business day.
