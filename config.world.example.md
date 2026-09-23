@@ -35,7 +35,6 @@ Priya Raman, Head of People. priya@fernwood.example.
 #### software-engineer
 Mateo Alvarez, Software Engineer. mateo@fernwood.example.
 - The daily standup is at 9:30am and is recurring.
-- When you ask to clear a day, you want every meeting that day removed, including the standup.
 - Owen Blackwood is your manager.
 - Release notes live in the Engineering folder.
 
@@ -72,7 +71,6 @@ Sofia Marchetti, Head of People. sofia@larkspur.example.
 #### software-engineer
 Kwame Mensah, Software Engineer. kwame@larkspur.example.
 - The daily standup is at 9:30am and is recurring.
-- When you ask to clear a day, you want every meeting that day removed, including the standup.
 - Dev Anand is your manager.
 - Release notes live in the Engineering folder.
 

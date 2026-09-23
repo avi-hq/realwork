@@ -21,30 +21,43 @@ Copy the two example files, fill them in, and keep them somewhere private. They 
 One markdown file each. This is the template. Copy it.
 
 ```markdown
-# Tell a contact a meeting moved
+# Reschedule a customer meeting
 
-**Services:** google-gmail
+The VP Sales asks the assistant to move an existing meeting with a customer to a new time. Tests changing the event in place so the customer sees the new time, without creating a second event.
+
+**Services:** google-calendar
 **Persona:** vp-sales
 **Level:** 1
 **Frequency:** common
 
 ## Inputs
-- {contact}: a person at an external company whose contact is the persona
-- {event}: a meeting on the persona's calendar in the next two weeks
-- {time}: a weekday time next week when the persona is free
+- {contact}: a known person at a customer whose contact is the persona
+- {event}: a made-up meeting title
+- {old}: a weekday time next week when the persona is free
+- {new}: a different weekday time next week when the persona is free
+
+## Setup
+- As the persona, create a 30-minute {event} at {old} with {contact} as an attendee.
 
 ## Task
-Email {contact} and let them know {event} moved to {time}.
+Move my {event} with {contact} to {new}.
 
 ## Pass when
-- {contact}'s mailbox receives one email during the run that names {event} and {time}.
+- {event} is at {new} and still has {contact} as an attendee.
+- {contact}'s calendar shows {event} at {new}.
 
 ## Fail when
-- Any email is sent to anyone other than {contact}.
-- Any calendar event is changed.
+- A second {event} exists.
+- Any other event is created, moved, or removed.
+
+## Cleanup
+- Delete {event} without notifying attendees.
+- Trash every email the run and its setup sent, in every mailbox that holds a copy.
 ```
 
-**Filename** is the slug, then each service in alphabetical order, joined with underscores: `tell-contact-meeting-moved_google-gmail.md`, `book-call-and-notify_google-calendar_google-gmail.md`. Hyphens inside a slug or a service, underscores between them. The same work on a different provider is the same slug with a different suffix, so `tell-contact-meeting-moved_microsoft-outlook.md` sits beside it. To add a provider, copy the file, change the suffix and the Services line, keep everything else identical.
+**Description** is two sentences under the title. The first says who asks the assistant to do what, in plain words. The second starts with "Tests" and says what makes the workflow hard or what it is really checking. Someone skimming the folder should know what a workflow does from this alone.
+
+**Filename** is the slug, then each service in alphabetical order, joined with underscores: `reschedule-customer-meeting_google-calendar.md`, `offer-customer-open-times_google-calendar_google-gmail.md`. Hyphens inside a slug or a service, underscores between them. The same work on a different provider is the same slug with a different suffix, so `reschedule-customer-meeting_microsoft-calendar.md` sits beside it. To add a provider, copy the file, change the suffix and the Services line, keep everything else identical.
 
 **Services** are `company-product`, lowercase. Never the product alone. List the services the assistant must act in.
 
@@ -60,11 +73,15 @@ Email {contact} and let them know {event} moved to {time}.
 
 **Frequency** is `common` or `uncommon` for that role in a normal week.
 
-**Inputs** are placeholders in braces, each with one line on how to pick it. The operator picks fresh values every run and writes them down first. People and companies are picked from `config.world.md` by relationship and contact, never by name, so the same workflow runs against any employer and any outside companies a world holds. If an input does not exist yet, the operator makes it before the run, acting as an outside person where needed. Never reuse a combination two runs in a row. Task, pass lines, and fail lines use the same placeholders.
+**Inputs** are placeholders in braces, each with one line on how to pick it. The operator picks fresh values every run and writes them down first. People and companies are picked from `config.world.md` by relationship and contact, never by name, so the same workflow runs against any employer and any outside companies a world holds. Never reuse a combination two runs in a row. Task, pass lines, and fail lines use the same placeholders.
 
 **Pass when** and **Fail when** lines are self-contained, binary, checkable in the real service, and name the exact person, thread, event, file, or record. Never a line about tone or quality. Lines are judged on what changed during the run, not the whole account. A workflow passes only when every pass line holds and no fail line fires.
 
-**Nothing is finite.** A workflow never needs a new account or domain to run again. Fresh runs come from different inputs: a different person, a different meeting, a different time, or a record an earlier workflow created. A run that needs something bought or provisioned first is a bug in the workflow.
+**Setup** is what the operator creates before the task, acting as the persona, a coworker, or an outside person: an email to answer, a meeting to move, a file to rename. Anything a workflow changes, moves, or deletes is created by its own Setup, so no run ever touches the seeded world. `None.` when nothing is needed.
+
+**Cleanup** is what the operator does after judging, pass or fail, even when the run was stopped. It undoes everything the run and its Setup created or changed: delete events without notifying attendees, trash emails in every mailbox that holds a copy, discard drafts, trash files and folders, delete contacts and labels, and put back anything renamed, moved, archived, or edited. Every run leaves the world exactly as seeded. This benchmark runs several times a day, so anything left behind piles up fast and changes the next run.
+
+**Order** of a workflow file: title, description, fields, Inputs, Setup, Task, Pass when, Fail when, Cleanup.
 
 ## World
 
@@ -98,17 +115,18 @@ A workflow runs when three things agree: the workflow's services, the employer's
 
 ## Setup
 
-Once. Never reset afterwards. Every run adds to it, the way a real company's accounts fill up.
+Once. This is the seeded world. Workflows read it but never change it, and every run cleans up after itself, so it stays as seeded.
 
 **Common**
 
 1. **Copy `config.world.example.md` to `config.world.md`.** Register the domains: one per employer, one per external company, on mixed top-level domains as real companies would. Write them in.
 2. **Outside users.** Add every external domain to a Google Workspace as a secondary domain. The employer's own Workspace is fine. Create one user per person listed under external companies, at their address, in an organizational unit named External.
+
 **Per employer**, according to its services
 
 3. **Tenant.** Google Workspace or Microsoft 365 on the employer's domain, in the time zone in `config.world.md`. One user per person in `config.world.md`.
 4. **Contacts.** Give each person the external people at companies whose contact they are.
-5. **Calendar.** The software engineer gets a recurring "Standup", weekdays 9:30 to 9:45. Everyone gets a handful of meetings over the next two weeks, some with their outside contacts. Top up whenever the next two weeks look empty.
+5. **Calendar.** The software engineer gets a recurring "Standup", weekdays 9:30 to 9:45. Everyone gets a few recurring weekly meetings, some with their outside contacts, so every week looks realistic without topping up.
 6. **Files.** One folder and one document each, in Drive or OneDrive. VP Sales "Sales" with "Proposal Template", software engineer "Engineering" with "Release Notes", CPO "Product" with "Roadmap", HR "People" with "Employee Handbook", CEO "Company" with "Board Update".
 7. **CRM**, if the employer has `hubspot-crm`. One free HubSpot account with the VP Sales as a user. Turn off automatic company creation from email domains. Rename the pipeline stages to New, Proposal Sent, Closed Won, Closed Lost. Add each customer with its people as contacts and one deal in stage "New". Nothing else. Prospects enter the CRM only when a workflow logs them.
 8. **Harness.** Connect the employer to the harness per the connect steps in `config.harness.md`.
@@ -117,10 +135,12 @@ Once. Never reset afterwards. Every run adds to it, the way a real company's acc
 
 1. Pick a harness and an employer. Filter workflows by level, service, persona, or frequency. Drop any the employer or harness cannot run.
 2. For each run, pick the inputs from `config.world.md` and record them.
-3. Give the task as the persona.
-4. Judge every pass and fail line against what changed during the run.
-5. Run each workflow three times with different inputs. It passes only if all three pass.
-6. Record the run in `runs/YYYY-MM-DD-harness-employer.md`, using the harness name from `config.harness.md`, one row per attempt. Time is minutes and seconds from the task being sent to the assistant saying it is done, or to the operator stopping it. Report pass rate, coverage, and median time by level, by service, and by employer.
+3. Do the Setup.
+4. Give the task as the persona.
+5. Judge every pass and fail line against what changed during the run.
+6. Do the Cleanup, whatever the result.
+7. Run each workflow three times with different inputs. It passes only if all three pass.
+8. Record the run in `runs/YYYY-MM-DD-harness-employer.md`, using the harness name from `config.harness.md`, one row per attempt. Time is minutes and seconds from the task being sent to the assistant saying it is done, or to the operator stopping it. Report pass rate, coverage, and median time by level, by service, and by employer.
 
 ```markdown
 # 2026-09-22 avi fernwood
@@ -129,8 +149,8 @@ Once. Never reset afterwards. Every run adds to it, the way a real company's acc
 
 | Workflow | Inputs | Time | Result | Failed line |
 |---|---|---|---|---|
-| tell-contact-meeting-moved_google-gmail | Dana, Halden sync, Tue 2pm | 0:48 | pass | |
-| tell-contact-meeting-moved_google-gmail | Ravi, Q4 review, Wed 10am | 2:15 | fail | Any email is sent to anyone other than {contact} |
+| reschedule-customer-meeting_google-calendar | Dana, Renewal sync, Tue 2pm to Wed 10am | 0:48 | pass | |
+| reschedule-customer-meeting_google-calendar | Ravi, Q4 review, Mon 11am to Thu 3pm | 2:15 | fail | A second {event} exists. |
 ```
 
 ## Versioning
@@ -143,33 +163,35 @@ Check every workflow against this list before it goes in. Each line exists becau
 
 **Workflow files**
 
-1. Copy the template. Every section, every field, in that order. No extra sections.
-2. Filename is slug, underscore, then each service alphabetical with underscores between. Hyphens only inside a slug or a service. It must match the Services line exactly.
-3. Services are `company-product` from the table above. `gmail` is wrong. `google-gmail` is right. A new service goes in the table first.
-4. Persona is one of the five persona headings. Never a name.
-5. Every `{placeholder}` in Task, Pass when, or Fail when is defined under Inputs.
-6. Every workflow has inputs. A task with no inputs does the same thing every run and piles up identical artifacts. That is a bug.
-7. People and companies are picked by relationship and contact, never named. "Email Dana" is wrong. "Email {contact}" with "{contact}: a person at a customer whose contact is the persona" is right.
-8. An input that may not exist yet says who makes it and how, in the input line.
-9. Nothing is finite. If running the workflow three times a day for a year would ever need a new domain, account, or seed step, rewrite it to vary its inputs among the people and records that exist.
-10. Pass and fail lines name one exact thing and are checkable in the service. "The email is professional" is not a line. "{contact}'s mailbox receives one email that names {time}" is.
-11. Every line is judged on what changed during the run. Write "during the run" when a count matters.
-12. Every workflow has at least one fail line for a side effect: the wrong recipient, the wrong record, a changed event.
-13. Anything the workflow depends on existing, a folder, a file, a pipeline stage, a recurring event, is listed in Setup. HubSpot's default stages are not "New" and "Proposal Sent". They are there because setup renames them.
-14. A workflow is written once per provider. Same slug, same task, same lines. Only the Services line and the filename suffix differ. Never write a workflow that only works on one provider's quirk.
-15. A workflow never assumes which employer it runs on. If it would read differently at a second employer, it is wrong.
+1. Copy the template. Every section, every field, in the order above. No extra sections.
+2. Write the description. Two sentences: who asks for what, then "Tests" and what it checks. A title alone is not enough to know what a workflow does.
+3. Filename is slug, underscore, then each service alphabetical with underscores between. Hyphens only inside a slug or a service. It must match the Services line exactly.
+4. Services are `company-product` from the table above. `gmail` is wrong. `google-gmail` is right. A new service goes in the table first.
+5. Persona is one of the five persona headings. Never a name.
+6. Every `{placeholder}` in Task, Pass when, or Fail when is defined under Inputs.
+7. Every workflow has inputs. A task with no inputs does the same thing every run and piles up identical artifacts. That is a bug.
+8. People and companies are picked by relationship and contact, never named. "Email Dana" is wrong. "Email {contact}" with "{contact}: a person at a customer whose contact is the persona" is right.
+9. Anything the task acts on that is not in the seeded world is created in Setup. Anything the workflow changes, moves, or deletes is created in Setup, never taken from the seed.
+10. Every workflow has a Cleanup that undoes everything the run and its Setup created or changed. Test it by asking: after Cleanup, could the next run tell this one happened? If yes, Cleanup is incomplete.
+11. Pass and fail lines name one exact thing and are checkable in the service. "The email is professional" is not a line. "{contact}'s mailbox receives one email that names {time}" is.
+12. Every line is judged on what changed during the run. Write "during the run" when a count matters.
+13. Every workflow has at least one fail line for a side effect: the wrong recipient, the wrong record, a changed event.
+14. Anything the workflow depends on existing that it does not create itself, a folder, a file, a pipeline stage, a recurring event, is listed in the README's one-time Setup. HubSpot's default stages are not "New" and "Proposal Sent". They are there because setup renames them.
+15. A workflow is written once per provider. Same slug, same task, same lines. Only the Services line and the filename suffix differ. Never write a workflow that only works on one provider's quirk.
+16. A workflow never assumes which employer it runs on. If it would read differently at a second employer, it is wrong.
+17. No two workflows test the same thing. Each one checks an action, a decision, or a way to go wrong that no other workflow checks. The same action on different data is a duplicate.
 
 **Config**
 
-16. Never invent a domain. Every domain in `config.world.md` is one you own. `.example` belongs only in `config.world.example.md`.
-17. Never put an outside person on an employer domain. Employees are inside, everyone else is outside, and the model is being tested on telling them apart.
-18. Never share a root domain between external companies or employers. Subdomains of one root are still one root.
-19. Outside users live in their own organizational unit, on their own domains. A separate tenant is optional. What is never optional is the domain: an outside person is never on an employer's domain.
-20. Nothing about a person, company, service, or domain lives outside `config.world.md`. Nothing about the assistant under test lives outside `config.harness.md`. Not in a workflow, not in this README.
-21. Every outside person is a real Workspace user. Never invent an address. Never add a catch-all, forwarding, or alias that lets mail cross domains.
-22. Every employer has the same five persona headings. Facts and external company facts name roles, not employers, so they hold at every employer.
+18. Never invent a domain. Every domain in `config.world.md` is one you own. `.example` belongs only in `config.world.example.md`.
+19. Never put an outside person on an employer domain. Employees are inside, everyone else is outside, and the model is being tested on telling them apart.
+20. Never share a root domain between external companies or employers. Subdomains of one root are still one root.
+21. Outside users live in their own organizational unit, on their own domains. A separate tenant is optional. What is never optional is the domain: an outside person is never on an employer's domain.
+22. Nothing about a person, company, service, or domain lives outside `config.world.md`. Nothing about the assistant under test lives outside `config.harness.md`. Not in a workflow, not in this README.
+23. Every outside person is a real Workspace user. Never invent an address. Never add a catch-all, forwarding, or alias that lets mail cross domains.
+24. Every employer has the same five persona headings. Facts and external company facts name roles, not employers, so they hold at every employer.
 
 **Changing anything**
 
-23. Renaming or removing anything in `config.world.md` means grepping the whole repo for the old value and fixing every hit.
-24. Do not add documents. Rules go in this README. The cast goes in `config.world.md`. The assistant goes in `config.harness.md`. The template is the example above. If it does not fit, it is not simple enough yet.
+25. Renaming or removing anything in `config.world.md` means grepping the whole repo for the old value and fixing every hit.
+26. Do not add documents. Rules go in this README. The cast goes in `config.world.md`. The assistant goes in `config.harness.md`. The template is the example above. If it does not fit, it is not simple enough yet.
