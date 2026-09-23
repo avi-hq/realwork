@@ -2,12 +2,9 @@
 
 EXAMPLE. Copy this file to `config.world.md` and put in domains you own. `config.world.md` is gitignored. Names here are made up. Domains end in `.example`.
 
-Employers are what gets tested. Add as many as you like. Every employer has the same five personas: ceo, cpo, hr, software-engineer, vp-sales. External companies are shared by every employer and live in one outside Google Workspace of their own.
+Employers are what gets tested. Add as many as you like. Every employer has the same five personas: ceo, cpo, hr, software-engineer, vp-sales. External companies are shared by every employer, grouped by type, and live in one outside Google Workspace of their own. Every listed person is a real user there. Nothing else exists on those domains.
 
 **Time zone:** America/Los_Angeles
-**Catch-all:** catchall@haldenfreight.example
-
-The catch-all is a mailbox in the outside Workspace. Any address on an external domain that is not a listed person lands there, so workflows may invent people at any external company.
 
 ## Employers
 
@@ -87,10 +84,11 @@ Ruth Adler, VP Sales. ruth@larkspur.example.
 
 ## External
 
-### Halden Freight
+### Customers
+
+#### Halden Freight
 
 **Domain:** haldenfreight.example
-**Relationship:** customer
 **Contact:** vp-sales
 
 People
@@ -100,10 +98,9 @@ Facts
 - On the Team plan at 1,200 dollars a month. Renewal is coming up.
 - Cares about price. Replies within a day.
 
-### Cobalt Marine
+#### Cobalt Marine
 
 **Domain:** cobaltmarine.example
-**Relationship:** customer
 **Contact:** vp-sales
 
 People
@@ -113,10 +110,11 @@ Facts
 - On the Starter plan at 400 dollars a month.
 - Considering moving up to the Team plan.
 
-### Adebayo Design
+### Vendors
+
+#### Adebayo Design
 
 **Domain:** adebayodesign.example
-**Relationship:** vendor
 **Contact:** cpo
 
 People
@@ -126,10 +124,11 @@ Facts
 - Does contract product design for the employer.
 - Usually free weekday mornings.
 
-### Marlow Bakery
+### Prospects
+
+#### Marlow Bakery
 
 **Domain:** marlowbakery.example
-**Relationship:** prospect
 **Contact:** vp-sales
 
 People

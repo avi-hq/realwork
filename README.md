@@ -64,7 +64,7 @@ Email {contact} and let them know {event} moved to {time}.
 
 **Pass when** and **Fail when** lines are self-contained, binary, checkable in the real service, and name the exact person, thread, event, file, or record. Never a line about tone or quality. Lines are judged on what changed during the run, not the whole account. A workflow passes only when every pass line holds and no fail line fires.
 
-**Nothing is finite.** A workflow never needs a new account or domain to run again. When it needs a fresh thing, it invents a person at an existing external company, or uses a record an earlier workflow created. A run that needs something bought or provisioned first is a bug in the workflow.
+**Nothing is finite.** A workflow never needs a new account or domain to run again. Fresh runs come from different inputs: a different person, a different meeting, a different time, or a record an earlier workflow created. A run that needs something bought or provisioned first is a bug in the workflow.
 
 ## World
 
@@ -72,9 +72,9 @@ Email {contact} and let them know {event} moved to {time}.
 
 **Employers** are what gets tested. Each is one company on one registered domain with one list of services and its own five people. Add as many as you like: one on Google, one on Microsoft, one with no CRM. A workflow runs on an employer only if the employer's services include every service the workflow needs. Every employer has the same five persona headings, so a workflow's Persona line means the same role anywhere. Under each heading: one line with name, title, and address, then the facts that person knows as bullets.
 
-**External** companies are shared by every employer. Each has a name, its own registered domain, a relationship of `customer`, `vendor`, or `prospect`, the persona that is its contact, its known people as bullets, and facts as bullets.
+**External** companies are shared by every employer and grouped by type: Customers, Vendors, Prospects. Each has a name, its own registered domain, the persona that is its contact, its people as bullets, and facts as bullets.
 
-**The outside world** is one Google Workspace of its own, separate from every employer. Every external domain is a domain in it. Every known external person is a real user in it, and the operator signs in as them to read, send, and reply. A catch-all on each domain routes any other address to one mailbox, so a workflow may invent a person at any external company. Known people can send and receive. Invented people can only receive.
+**The outside world** is one Google Workspace of its own, separate from every employer. Every external domain is a domain in it. Every external person is a real user in it, and the operator signs in as them to read, send, and reply. Nothing else exists on those domains. No catch-all, no forwarding, no aliases, so no mail ever crosses from one domain to another.
 
 A world needs at least one employer, two customers, and one vendor for the current workflows to run.
 
@@ -104,16 +104,14 @@ Once. Never reset afterwards. Every run adds to it, the way a real company's acc
 
 1. **Copy `config.world.example.md` to `config.world.md`.** Register the domains: one per employer, one per external company, on mixed top-level domains as real companies would. Write them in.
 2. **The outside Workspace.** One Google Workspace, separate from every employer, in the time zone in `config.world.md`. Add every external domain to it. Create one user per person listed under external companies, at their address.
-3. **Catch-all.** In that Workspace, route unknown addresses on every external domain to the catch-all mailbox in `config.world.md`.
-
 **Per employer**, according to its services
 
-4. **Tenant.** Google Workspace or Microsoft 365 on the employer's domain, in the time zone in `config.world.md`. One user per person in `config.world.md`.
-5. **Contacts.** Give each person the external people at companies whose contact they are.
-6. **Calendar.** The software engineer gets a recurring "Standup", weekdays 9:30 to 9:45. Everyone gets a handful of meetings over the next two weeks, some with their outside contacts. Top up whenever the next two weeks look empty.
-7. **Files.** One folder and one document each, in Drive or OneDrive. VP Sales "Sales" with "Proposal Template", software engineer "Engineering" with "Release Notes", CPO "Product" with "Roadmap", HR "People" with "Employee Handbook", CEO "Company" with "Board Update".
-8. **CRM**, if the employer has `hubspot-crm`. One free HubSpot account with the VP Sales as a user. Turn off automatic company creation from email domains. Rename the pipeline stages to New, Proposal Sent, Closed Won, Closed Lost. Add each customer with its people as contacts and one deal in stage "New". Nothing else. Prospects enter the CRM only when a workflow logs them.
-9. **Harness.** Connect the employer to the harness per the connect steps in `config.harness.md`.
+3. **Tenant.** Google Workspace or Microsoft 365 on the employer's domain, in the time zone in `config.world.md`. One user per person in `config.world.md`.
+4. **Contacts.** Give each person the external people at companies whose contact they are.
+5. **Calendar.** The software engineer gets a recurring "Standup", weekdays 9:30 to 9:45. Everyone gets a handful of meetings over the next two weeks, some with their outside contacts. Top up whenever the next two weeks look empty.
+6. **Files.** One folder and one document each, in Drive or OneDrive. VP Sales "Sales" with "Proposal Template", software engineer "Engineering" with "Release Notes", CPO "Product" with "Roadmap", HR "People" with "Employee Handbook", CEO "Company" with "Board Update".
+7. **CRM**, if the employer has `hubspot-crm`. One free HubSpot account with the VP Sales as a user. Turn off automatic company creation from email domains. Rename the pipeline stages to New, Proposal Sent, Closed Won, Closed Lost. Add each customer with its people as contacts and one deal in stage "New". Nothing else. Prospects enter the CRM only when a workflow logs them.
+8. **Harness.** Connect the employer to the harness per the connect steps in `config.harness.md`.
 
 ## Running
 
@@ -153,7 +151,7 @@ Check every workflow against this list before it goes in. Each line exists becau
 6. Every workflow has inputs. A task with no inputs does the same thing every run and piles up identical artifacts. That is a bug.
 7. People and companies are picked by relationship and contact, never named. "Email Dana" is wrong. "Email {contact}" with "{contact}: a person at a customer whose contact is the persona" is right.
 8. An input that may not exist yet says who makes it and how, in the input line.
-9. Nothing is finite. If running the workflow three times a day for a year would ever need a new domain, account, or seed step, rewrite it to invent a person or reuse a record instead.
+9. Nothing is finite. If running the workflow three times a day for a year would ever need a new domain, account, or seed step, rewrite it to vary its inputs among the people and records that exist.
 10. Pass and fail lines name one exact thing and are checkable in the service. "The email is professional" is not a line. "{contact}'s mailbox receives one email that names {time}" is.
 11. Every line is judged on what changed during the run. Write "during the run" when a count matters.
 12. Every workflow has at least one fail line for a side effect: the wrong recipient, the wrong record, a changed event.
@@ -168,7 +166,7 @@ Check every workflow against this list before it goes in. Each line exists becau
 18. Never share a root domain between external companies or employers. Subdomains of one root are still one root.
 19. Never put an external domain in an employer's tenant, and never put an employer's domain in the outside Workspace. The tenant boundary is what makes them outsiders.
 20. Nothing about a person, company, service, or domain lives outside `config.world.md`. Nothing about the assistant under test lives outside `config.harness.md`. Not in a workflow, not in this README.
-21. Known people send and receive. Invented people receive only. A workflow that needs an outside party to write in uses a known person.
+21. Every outside person is a real user in the outside Workspace. Never invent an address. Never add a catch-all, forwarding, or alias that lets mail cross domains.
 22. Every employer has the same five persona headings. Facts and external company facts name roles, not employers, so they hold at every employer.
 
 **Changing anything**
