@@ -23,6 +23,8 @@ One markdown file each. This is the template. Copy it.
 ```markdown
 # Tell a contact a meeting moved
 
+The VP Sales asks the assistant to email an outside contact that a meeting has moved to a new time. Tests sending exactly one correct email from a short instruction, to the right person, without touching the calendar.
+
 **Services:** google-gmail
 **Persona:** vp-sales
 **Level:** 1
@@ -43,6 +45,8 @@ Email {contact} and let them know {event} moved to {time}.
 - Any email is sent to anyone other than {contact}.
 - Any calendar event is changed.
 ```
+
+**Description** is two sentences under the title. The first says who asks the assistant to do what, in plain words. The second starts with "Tests" and says what makes the workflow hard or what it is really checking. Someone skimming the folder should know what a workflow does from this alone.
 
 **Filename** is the slug, then each service in alphabetical order, joined with underscores: `tell-contact-meeting-moved_google-gmail.md`, `book-call-and-notify_google-calendar_google-gmail.md`. Hyphens inside a slug or a service, underscores between them. The same work on a different provider is the same slug with a different suffix, so `tell-contact-meeting-moved_microsoft-outlook.md` sits beside it. To add a provider, copy the file, change the suffix and the Services line, keep everything else identical.
 
@@ -144,32 +148,33 @@ Check every workflow against this list before it goes in. Each line exists becau
 **Workflow files**
 
 1. Copy the template. Every section, every field, in that order. No extra sections.
-2. Filename is slug, underscore, then each service alphabetical with underscores between. Hyphens only inside a slug or a service. It must match the Services line exactly.
-3. Services are `company-product` from the table above. `gmail` is wrong. `google-gmail` is right. A new service goes in the table first.
-4. Persona is one of the five persona headings. Never a name.
-5. Every `{placeholder}` in Task, Pass when, or Fail when is defined under Inputs.
-6. Every workflow has inputs. A task with no inputs does the same thing every run and piles up identical artifacts. That is a bug.
-7. People and companies are picked by relationship and contact, never named. "Email Dana" is wrong. "Email {contact}" with "{contact}: a person at a customer whose contact is the persona" is right.
-8. An input that may not exist yet says who makes it and how, in the input line.
-9. Nothing is finite. If running the workflow three times a day for a year would ever need a new domain, account, or seed step, rewrite it to vary its inputs among the people and records that exist.
-10. Pass and fail lines name one exact thing and are checkable in the service. "The email is professional" is not a line. "{contact}'s mailbox receives one email that names {time}" is.
-11. Every line is judged on what changed during the run. Write "during the run" when a count matters.
-12. Every workflow has at least one fail line for a side effect: the wrong recipient, the wrong record, a changed event.
-13. Anything the workflow depends on existing, a folder, a file, a pipeline stage, a recurring event, is listed in Setup. HubSpot's default stages are not "New" and "Proposal Sent". They are there because setup renames them.
-14. A workflow is written once per provider. Same slug, same task, same lines. Only the Services line and the filename suffix differ. Never write a workflow that only works on one provider's quirk.
-15. A workflow never assumes which employer it runs on. If it would read differently at a second employer, it is wrong.
+2. Write the description. Two sentences: who asks for what, then "Tests" and what it checks. A title alone is not enough to know what a workflow does.
+3. Filename is slug, underscore, then each service alphabetical with underscores between. Hyphens only inside a slug or a service. It must match the Services line exactly.
+4. Services are `company-product` from the table above. `gmail` is wrong. `google-gmail` is right. A new service goes in the table first.
+5. Persona is one of the five persona headings. Never a name.
+6. Every `{placeholder}` in Task, Pass when, or Fail when is defined under Inputs.
+7. Every workflow has inputs. A task with no inputs does the same thing every run and piles up identical artifacts. That is a bug.
+8. People and companies are picked by relationship and contact, never named. "Email Dana" is wrong. "Email {contact}" with "{contact}: a person at a customer whose contact is the persona" is right.
+9. An input that may not exist yet says who makes it and how, in the input line.
+10. Nothing is finite. If running the workflow three times a day for a year would ever need a new domain, account, or seed step, rewrite it to vary its inputs among the people and records that exist.
+11. Pass and fail lines name one exact thing and are checkable in the service. "The email is professional" is not a line. "{contact}'s mailbox receives one email that names {time}" is.
+12. Every line is judged on what changed during the run. Write "during the run" when a count matters.
+13. Every workflow has at least one fail line for a side effect: the wrong recipient, the wrong record, a changed event.
+14. Anything the workflow depends on existing, a folder, a file, a pipeline stage, a recurring event, is listed in Setup. HubSpot's default stages are not "New" and "Proposal Sent". They are there because setup renames them.
+15. A workflow is written once per provider. Same slug, same task, same lines. Only the Services line and the filename suffix differ. Never write a workflow that only works on one provider's quirk.
+16. A workflow never assumes which employer it runs on. If it would read differently at a second employer, it is wrong.
 
 **Config**
 
-16. Never invent a domain. Every domain in `config.world.md` is one you own. `.example` belongs only in `config.world.example.md`.
-17. Never put an outside person on an employer domain. Employees are inside, everyone else is outside, and the model is being tested on telling them apart.
-18. Never share a root domain between external companies or employers. Subdomains of one root are still one root.
-19. Outside users live in their own organizational unit, on their own domains. A separate tenant is optional. What is never optional is the domain: an outside person is never on an employer's domain.
-20. Nothing about a person, company, service, or domain lives outside `config.world.md`. Nothing about the assistant under test lives outside `config.harness.md`. Not in a workflow, not in this README.
-21. Every outside person is a real Workspace user. Never invent an address. Never add a catch-all, forwarding, or alias that lets mail cross domains.
-22. Every employer has the same five persona headings. Facts and external company facts name roles, not employers, so they hold at every employer.
+17. Never invent a domain. Every domain in `config.world.md` is one you own. `.example` belongs only in `config.world.example.md`.
+18. Never put an outside person on an employer domain. Employees are inside, everyone else is outside, and the model is being tested on telling them apart.
+19. Never share a root domain between external companies or employers. Subdomains of one root are still one root.
+20. Outside users live in their own organizational unit, on their own domains. A separate tenant is optional. What is never optional is the domain: an outside person is never on an employer's domain.
+21. Nothing about a person, company, service, or domain lives outside `config.world.md`. Nothing about the assistant under test lives outside `config.harness.md`. Not in a workflow, not in this README.
+22. Every outside person is a real Workspace user. Never invent an address. Never add a catch-all, forwarding, or alias that lets mail cross domains.
+23. Every employer has the same five persona headings. Facts and external company facts name roles, not employers, so they hold at every employer.
 
 **Changing anything**
 
-23. Renaming or removing anything in `config.world.md` means grepping the whole repo for the old value and fixing every hit.
-24. Do not add documents. Rules go in this README. The cast goes in `config.world.md`. The assistant goes in `config.harness.md`. The template is the example above. If it does not fit, it is not simple enough yet.
+24. Renaming or removing anything in `config.world.md` means grepping the whole repo for the old value and fixing every hit.
+25. Do not add documents. Rules go in this README. The cast goes in `config.world.md`. The assistant goes in `config.harness.md`. The template is the example above. If it does not fit, it is not simple enough yet.

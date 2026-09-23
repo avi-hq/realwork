@@ -1,5 +1,7 @@
 # Tell a contact a meeting moved
 
+The VP Sales asks the assistant to email an outside contact that a meeting has moved to a new time. Tests sending exactly one correct email from a short instruction, to the right person, without touching the calendar.
+
 **Services:** google-gmail
 **Persona:** vp-sales
 **Level:** 1

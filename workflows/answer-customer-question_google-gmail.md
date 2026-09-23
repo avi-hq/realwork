@@ -1,5 +1,7 @@
 # Answer a customer question
 
+A customer has emailed a question, and the VP Sales asks the assistant to reply. Tests finding the right thread and the right fact without being told either, then answering in that thread without offering anything extra, like a discount.
+
 **Services:** google-gmail
 **Persona:** vp-sales
 **Level:** 2

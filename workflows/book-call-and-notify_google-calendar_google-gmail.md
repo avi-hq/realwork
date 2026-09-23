@@ -1,5 +1,7 @@
 # Book a call and notify
 
+The CPO asks the assistant to book a 30-minute call with an outside vendor and let them know. Tests two linked actions across Calendar and Gmail: one event with the vendor invited, and one email with the time.
+
 **Services:** google-calendar, google-gmail
 **Persona:** cpo
 **Level:** 3
