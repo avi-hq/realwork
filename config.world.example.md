@@ -2,7 +2,7 @@
 
 EXAMPLE. Copy this file to `config.world.md` and put in domains you own. `config.world.md` is gitignored. Names here are made up. Domains end in `.example`.
 
-Employers are what gets tested. Add as many as you like. Every employer has the same five personas: ceo, cpo, hr, software-engineer, vp-sales. External companies are shared by every employer, grouped by type, and live in one outside Google Workspace of their own. Every listed person is a real user there. Nothing else exists on those domains.
+Employers are what gets tested. Add as many as you like. Every employer has the same five personas: ceo, cpo, hr, software-engineer, vp-sales. External companies are shared by every employer and grouped by type. Every listed person is a real Google Workspace user on the company's domain. Nothing else exists on those domains.
 
 **Time zone:** America/Los_Angeles
 

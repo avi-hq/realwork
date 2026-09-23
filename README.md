@@ -74,7 +74,7 @@ Email {contact} and let them know {event} moved to {time}.
 
 **External** companies are shared by every employer and grouped by type: Customers, Vendors, Prospects. Each has a name, its own registered domain, the persona that is its contact, its people as bullets, and facts as bullets.
 
-**The outside world** is one Google Workspace of its own, separate from every employer. Every external domain is a domain in it. Every external person is a real user in it, and the operator signs in as them to read, send, and reply. Nothing else exists on those domains. No catch-all, no forwarding, no aliases, so no mail ever crosses from one domain to another.
+**Outside users** are real Google Workspace users on their company's domain, and the operator signs in as them to read, send, and reply. The simplest home for them is the employer's own Workspace, with every external domain added as a secondary domain and the outside users in their own organizational unit. Google then treats them as coworkers, which the current workflows don't care about. Use a separate tenant instead if you want Google itself to treat them as outsiders. Either way, nothing else exists on those domains. No catch-all, no forwarding, no aliases, so no mail ever crosses from one domain to another.
 
 A world needs at least one employer, two customers, and one vendor for the current workflows to run.
 
@@ -103,7 +103,7 @@ Once. Never reset afterwards. Every run adds to it, the way a real company's acc
 **Common**
 
 1. **Copy `config.world.example.md` to `config.world.md`.** Register the domains: one per employer, one per external company, on mixed top-level domains as real companies would. Write them in.
-2. **The outside Workspace.** One Google Workspace, separate from every employer, in the time zone in `config.world.md`. Add every external domain to it. Create one user per person listed under external companies, at their address.
+2. **Outside users.** Add every external domain to a Google Workspace as a secondary domain. The employer's own Workspace is fine. Create one user per person listed under external companies, at their address, in an organizational unit named External.
 **Per employer**, according to its services
 
 3. **Tenant.** Google Workspace or Microsoft 365 on the employer's domain, in the time zone in `config.world.md`. One user per person in `config.world.md`.
@@ -164,9 +164,9 @@ Check every workflow against this list before it goes in. Each line exists becau
 16. Never invent a domain. Every domain in `config.world.md` is one you own. `.example` belongs only in `config.world.example.md`.
 17. Never put an outside person on an employer domain. Employees are inside, everyone else is outside, and the model is being tested on telling them apart.
 18. Never share a root domain between external companies or employers. Subdomains of one root are still one root.
-19. Never put an external domain in an employer's tenant, and never put an employer's domain in the outside Workspace. The tenant boundary is what makes them outsiders.
+19. Outside users live in their own organizational unit, on their own domains. A separate tenant is optional. What is never optional is the domain: an outside person is never on an employer's domain.
 20. Nothing about a person, company, service, or domain lives outside `config.world.md`. Nothing about the assistant under test lives outside `config.harness.md`. Not in a workflow, not in this README.
-21. Every outside person is a real user in the outside Workspace. Never invent an address. Never add a catch-all, forwarding, or alias that lets mail cross domains.
+21. Every outside person is a real Workspace user. Never invent an address. Never add a catch-all, forwarding, or alias that lets mail cross domains.
 22. Every employer has the same five persona headings. Facts and external company facts name roles, not employers, so they hold at every employer.
 
 **Changing anything**
