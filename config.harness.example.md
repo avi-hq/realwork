@@ -2,7 +2,7 @@
 
 EXAMPLE. Copy this file to `config.harness.md` and fill in the assistant under test. `config.harness.md` is gitignored because it holds sign-in details.
 
-**Services:** google-gmail, google-calendar, google-drive, google-contacts
+**Services:** google-gmail, google-calendar, google-drive, google-contacts, avi-drive
 
 ## Connect
 

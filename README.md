@@ -66,6 +66,9 @@ Move my {event} with {contact} to {new}.
 | google | `google-gmail`, `google-calendar`, `google-drive`, `google-contacts` |
 | microsoft | `microsoft-outlook`, `microsoft-calendar`, `microsoft-onedrive`, `microsoft-contacts` |
 | hubspot | `hubspot-crm` |
+| avi | `avi-drive` |
+
+A service named after a harness, like `avi-drive`, lives inside that harness rather than at the employer. Only the harness needs it, and every other harness skips it.
 
 **Persona** is one of the five personas every employer has: `ceo`, `cpo`, `hr`, `software-engineer`, `vp-sales`.
 
@@ -111,7 +114,7 @@ The operator is whoever drives the harness, a human or an agent in a VM. The ope
 
 `config.harness.md` is the assistant under test: its name, the services it can act in, how to connect an employer to it, and how to give it a task. Connection differs by harness. Avi connects through its apps per user, an MCP harness configures servers. Sign-in details live here and nowhere else, which is why the real file is never committed. The repo ships `config.harness.example.md` filled in for Avi.
 
-A workflow runs when three things agree: the workflow's services, the employer's services, and the harness's services. Otherwise it is skipped. Skips count against coverage, never against pass rate.
+A workflow runs when three things agree: the workflow's services, the employer's services, and the harness's services. A harness's own services, like `avi-drive`, only need the harness. Otherwise it is skipped. Skips count against coverage, never against pass rate.
 
 ## Setup
 
