@@ -10,4 +10,16 @@ Once per employer. Avi connects through its apps, one account per user, not thro
 
 ## Run
 
-Sign in at https://avi.run as the persona. Open a chat and paste the task. Answer clarifying questions as the persona.
+Sign in at https://avi.run as the persona. Open a new chat for every workflow and paste the task. Answer clarifying questions as the persona.
+
+## Reset
+
+Part of Clear, before and after every session. Sign in at https://avi.run as each person in the employer and delete:
+
+- Every conversation.
+- Every background agent and anything scheduled to run.
+- Everything in Avi Drive: files, notes, documents, and folders.
+- Every Avi task.
+- Anything else Avi keeps between conversations, such as memories.
+
+Keep Google connected. Reconnecting is part of Setup, not Reset.

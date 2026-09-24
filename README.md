@@ -9,7 +9,7 @@ Each pass condition is checked in a real service. The assistant under test is a 
 ```
 README.md                   everything: rules, setup, how to run, guidelines
 config.world.example.md     the cast: employers, their people and services, outside companies
-config.harness.example.md   the assistant under test: its services, how to connect, how to run
+config.harness.example.md   the assistant under test: its services, how to connect, run, and reset it
 workflows/                  one file per workflow, flat
 runs/                       one file per run
 ```
@@ -84,7 +84,7 @@ A service named after a harness, like `avi-drive`, lives inside that harness rat
 
 **Setup** is what the operator creates before the task, acting as the persona, a coworker, or an outside person: an email to answer, a meeting to move, a file to rename. Anything a workflow changes, moves, or deletes is created by its own Setup, so no run ever touches the seeded world. `None.` when nothing is needed.
 
-**Cleanup** is what the operator does after judging, pass or fail, even when the run was stopped. It undoes everything the run and its Setup created or changed: delete events without notifying attendees, trash emails in every mailbox that holds a copy, discard drafts, trash files and folders, delete contacts and labels, and put back anything renamed, moved, archived, or edited. Every run leaves the world exactly as seeded. This benchmark runs several times a day, so anything left behind piles up fast and changes the next run.
+**Cleanup** is what the operator does after judging, pass or fail, even when the run was stopped. It undoes everything the run and its Setup created or changed: delete events without notifying attendees, trash emails in every mailbox that holds a copy, discard drafts, trash files and folders, delete contacts and labels, and put back anything renamed, moved, archived, or edited. Every run leaves the world exactly as seeded. Reset clears everything before and after a session, but workflows run one after another inside it, so anything one leaves behind changes the next.
 
 **Order** of a workflow file: title, description, fields, Inputs, Setup, Task, Pass when, Fail when, Cleanup.
 
@@ -114,37 +114,57 @@ The operator is whoever drives the harness, a human or an agent in a VM. The ope
 
 ## Harness
 
-`config.harness.md` is the assistant under test: its name, the services it can act in, how to connect an employer to it, and how to give it a task. Connection differs by harness. Avi connects through its apps per user, an MCP harness configures servers. Sign-in details live here and nowhere else, which is why the real file is never committed. The repo ships `config.harness.example.md` filled in for Avi.
+`config.harness.md` is the assistant under test: its name, the services it can act in, how to connect an employer to it, how to give it a task, and what to clear in it on Reset. Connection differs by harness. Avi connects through its apps per user, an MCP harness configures servers. Sign-in details live here and nowhere else, which is why the real file is never committed. The repo ships `config.harness.example.md` filled in for Avi.
 
 A workflow runs when three things agree: the workflow's services, the employer's services, and the harness's services. A harness's own services, like `avi-drive`, only need the harness. Otherwise it is skipped. Skips count against coverage, never against pass rate.
 
 ## Setup
 
-Once. This is the seeded world. Workflows read it but never change it, and every run cleans up after itself, so it stays as seeded.
-
-**Common**
+Once, before the first session.
 
 1. **Copy `config.world.example.md` to `config.world.md`.** Register the domains: one per employer, one per external company, on mixed top-level domains as real companies would. Write them in.
 2. **Outside users.** Add every external domain to a Google Workspace as a secondary domain. The employer's own Workspace is fine. Create one user per person listed under external companies, at their address, in an organizational unit named External.
+3. **Employer tenant.** Google Workspace or Microsoft 365 on each employer's domain, in the time zone in `config.world.md`. One user per person in `config.world.md`.
+4. **CRM**, if the employer has `hubspot-crm`. One free HubSpot account with the VP Sales as a user. Turn off automatic company creation from email domains. Rename the pipeline stages to New, Proposal Sent, Closed Won, Closed Lost.
+5. **Harness.** Connect the employer to the harness per the Connect steps in `config.harness.md`.
 
-**Per employer**, according to its services
+## Reset
 
-3. **Tenant.** Google Workspace or Microsoft 365 on the employer's domain, in the time zone in `config.world.md`. One user per person in `config.world.md`.
-4. **Contacts.** Give each person the external people at companies whose contact they are.
-5. **Calendar.** The software engineer gets a recurring "Standup", weekdays 9:30 to 9:45. Everyone gets a few recurring weekly meetings, some with their outside contacts, so every week looks realistic without topping up.
-6. **Files.** One folder and one document each, in Drive or OneDrive. VP Sales "Sales" with "Proposal Template", software engineer "Engineering" with "Release Notes", CPO "Product" with "Roadmap", HR "People" with "Employee Handbook", CEO "Company" with "Board Update".
-7. **CRM**, if the employer has `hubspot-crm`. One free HubSpot account with the VP Sales as a user. Turn off automatic company creation from email domains. Rename the pipeline stages to New, Proposal Sent, Closed Won, Closed Lost. Add each customer with its people as contacts and one deal in stage "New". Nothing else. Prospects enter the CRM only when a workflow logs them.
-8. **Harness.** Connect the employer to the harness per the connect steps in `config.harness.md`.
+A session is one sitting in which a set of workflows runs against one employer. Every session starts from empty accounts and ends with empty accounts, so nothing from one session reaches the next. Reset runs twice per session: Clear and Seed before the first workflow, and Clear again after the last.
+
+Clear touches only the accounts listed in `config.world.md` and the harness sign-ins for them. Never run it against any other account.
+
+**Clear.** For every person at the employer and every outside user:
+
+- **Mail.** Delete every message in every folder, including sent, drafts, and spam, then empty the trash. Delete every label you did not get by default, every filter, and any auto-reply.
+- **Calendar.** Delete every event on every calendar, whole recurring series included, out-of-office and focus time included. Delete any extra calendars and booking pages.
+- **Files.** Delete every file and folder the account owns in Drive or OneDrive, then empty the trash.
+- **Contacts.** Delete every contact.
+- **Tasks.** Delete every task in every task list, and every list except the default.
+- **CRM**, if the employer has `hubspot-crm`. Delete every contact, company, deal, note, email, and task. Keep the pipeline stages.
+- **Harness.** Everything the Reset section of `config.harness.md` lists, such as conversations and anything the assistant keeps between them.
+
+Before seeding, open each account and check that it is empty.
+
+**Seed.** Before the first workflow only. This is the seeded world. Workflows read it but never change it.
+
+- **Contacts.** Give each person the external people at companies whose contact they are.
+- **Calendar.** The software engineer gets a recurring "Standup", weekdays 9:30 to 9:45. Everyone gets a few recurring weekly meetings, some with their outside contacts.
+- **Files.** One folder and one document each, in Drive or OneDrive. VP Sales "Sales" with "Proposal Template", software engineer "Engineering" with "Release Notes", CPO "Product" with "Roadmap", HR "People" with "Employee Handbook", CEO "Company" with "Board Update".
+- **CRM**, if the employer has `hubspot-crm`. Add each customer with its people as contacts and one deal in stage "New". Prospects enter the CRM only when a workflow logs them.
 
 ## Running
 
 1. Pick a harness and an employer. Filter workflows by level, service, persona, or frequency. Drop any the employer or harness cannot run.
-2. Run each workflow once. Pick its inputs from `config.world.md` and record them.
-3. Do the Setup.
-4. Give the task as the persona.
-5. Judge every pass and fail line against what changed during the run.
-6. Do the Cleanup, whatever the result.
-7. Record the run in `runs/YYYY-MM-DD-harness-employer.md`, using the harness name from `config.harness.md`, one row per workflow. Time is minutes and seconds from the task being sent to the assistant saying it is done, or to the operator stopping it. Report pass rate, coverage, and median time by level, by service, and by employer.
+2. **Reset before:** Clear, then Seed.
+3. Run each workflow once, one after another:
+   1. Pick its inputs from `config.world.md` and record them.
+   2. Do the workflow's Setup.
+   3. Give the task as the persona, in a new conversation.
+   4. Judge every pass and fail line against what changed during the run.
+   5. Do the workflow's Cleanup, whatever the result.
+4. **Reset after:** Clear.
+5. Record the run in `runs/YYYY-MM-DD-harness-employer.md`, using the harness name from `config.harness.md`, one row per workflow. Time is minutes and seconds from the task being sent to the assistant saying it is done, or to the operator stopping it. Report pass rate, coverage, and median time by level, by service, and by employer.
 
 ```markdown
 # 2026-09-22 avi fernwood
@@ -180,7 +200,7 @@ Check every workflow against this list before it goes in. Each line exists becau
 11. Pass and fail lines name one exact thing and are checkable in the service. "The email is professional" is not a line. "{contact}'s mailbox receives one email that names {time}" is.
 12. Every line is judged on what changed during the run. Write "during the run" when a count matters.
 13. Every workflow has at least one fail line for a side effect: the wrong recipient, the wrong record, a changed event.
-14. Anything the workflow depends on existing that it does not create itself, a folder, a file, a pipeline stage, a recurring event, is listed in the README's one-time Setup. HubSpot's default stages are not "New" and "Proposal Sent". They are there because setup renames them.
+14. Anything the workflow depends on existing that it does not create itself, a folder, a file, a pipeline stage, a recurring event, is listed in the README's Seed or Setup. HubSpot's default stages are not "New" and "Proposal Sent". They are there because setup renames them.
 15. A workflow is written once per provider. Same slug, same task, same lines. Only the Services line and the filename suffix differ. Never write a workflow that only works on one provider's quirk.
 16. A workflow never assumes which employer it runs on. If it would read differently at a second employer, it is wrong.
 17. No two workflows test the same thing. Each one checks an action, a decision, or a way to go wrong that no other workflow checks. The same action on different data is a duplicate.
