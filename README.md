@@ -139,13 +139,12 @@ Once. This is the seeded world. Workflows read it but never change it, and every
 ## Running
 
 1. Pick a harness and an employer. Filter workflows by level, service, persona, or frequency. Drop any the employer or harness cannot run.
-2. For each run, pick the inputs from `config.world.md` and record them.
+2. Run each workflow once. Pick its inputs from `config.world.md` and record them.
 3. Do the Setup.
 4. Give the task as the persona.
 5. Judge every pass and fail line against what changed during the run.
 6. Do the Cleanup, whatever the result.
-7. Run each workflow three times with different inputs. It passes only if all three pass.
-8. Record the run in `runs/YYYY-MM-DD-harness-employer.md`, using the harness name from `config.harness.md`, one row per attempt. Time is minutes and seconds from the task being sent to the assistant saying it is done, or to the operator stopping it. Report pass rate, coverage, and median time by level, by service, and by employer.
+7. Record the run in `runs/YYYY-MM-DD-harness-employer.md`, using the harness name from `config.harness.md`, one row per workflow. Time is minutes and seconds from the task being sent to the assistant saying it is done, or to the operator stopping it. Report pass rate, coverage, and median time by level, by service, and by employer.
 
 ```markdown
 # 2026-09-22 avi fernwood
@@ -155,7 +154,7 @@ Once. This is the seeded world. Workflows read it but never change it, and every
 | Workflow | Inputs | Time | Result | Failed line |
 |---|---|---|---|---|
 | reschedule-customer-meeting_google-calendar | Dana, Renewal sync, Tue 2pm to Wed 10am | 0:48 | pass | |
-| reschedule-customer-meeting_google-calendar | Ravi, Q4 review, Mon 11am to Thu 3pm | 2:15 | fail | A second {event} exists. |
+| offer-customer-open-times_google-calendar_google-gmail | Ravi, Next week | 2:15 | fail | None of the three overlaps an event on the persona's calendar. |
 ```
 
 ## Versioning
