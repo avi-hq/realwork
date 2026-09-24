@@ -78,6 +78,8 @@ A service named after a harness, like `avi-drive`, lives inside that harness rat
 
 **Inputs** are placeholders in braces, each with one line on how to pick it. The operator picks fresh values every run and writes them down first. People and companies are picked from `config.world.md` by relationship and contact, never by name, so the same workflow runs against any employer and any outside companies a world holds. Never reuse a combination two runs in a row. Task, pass lines, and fail lines use the same placeholders.
 
+**Task** is usually one message. A task written as numbered messages is sent one message at a time, each after the assistant says it has finished the one before.
+
 **Pass when** and **Fail when** lines are self-contained, binary, checkable in the real service, and name the exact person, thread, event, file, or record. Never a line about tone or quality. Lines are judged on what changed during the run, not the whole account. A workflow passes only when every pass line holds and no fail line fires.
 
 **Setup** is what the operator creates before the task, acting as the persona, a coworker, or an outside person: an email to answer, a meeting to move, a file to rename. Anything a workflow changes, moves, or deletes is created by its own Setup, so no run ever touches the seeded world. `None.` when nothing is needed.
