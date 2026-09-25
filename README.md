@@ -84,6 +84,8 @@ Move my {event} with {contact} to {new}.
 
 **Checking documents.** Check Word documents in Microsoft Word, the reference for how a `.docx` looks: styles, page setup, fields, list formatting, and tracked changes. Check PDFs in a viewer that shows page size, fonts, and bookmarks, such as Adobe Acrobat Reader. A PDF "matches" a document page for page when it has the same page count, each page starts and ends with the same content, and the headers, footers, and page numbers are the same as in Word.
 
+**Redlines and comments.** A redline means Word's own tracked changes, and a comment means a Word comment. Strikethrough, underline, or colored text is not a redline, and a note typed into the body is not a comment. Check them in Word's review tools: each tracked change's type, text, author, and whether it is accepted; each comment's text, author, the exact text it is attached to, its replies, and whether it is resolved. When a Setup step makes a change as someone else, set Word's user name to that person's full name first.
+
 **Cleanup.** What the operator undoes after judging, pass or fail, even if the run was stopped. It removes everything the run and its Setup created or changed: delete events without notifying attendees, trash emails in every mailbox that holds a copy, discard drafts, delete files, folders, contacts, and labels, and put back anything renamed, moved, archived, or edited. Workflows run one after another in a session, so anything left behind changes the next one.
 
 ## World
