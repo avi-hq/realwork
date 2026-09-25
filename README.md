@@ -82,6 +82,10 @@ Move my {event} with {contact} to {new}.
 
 **Pass when** and **Fail when.** Each line is binary, checkable in the real service, and names the exact person, thread, event, file, or contact. Never a line about tone or quality. Lines are judged on what changed during the run. A workflow passes only when every pass line holds and no fail line fires.
 
+**Checking documents.** Check Word documents in Microsoft Word, the reference for how a `.docx` looks: styles, page setup, fields, list formatting, and tracked changes. Check PDFs in a viewer that shows page size, fonts, and bookmarks, such as Adobe Acrobat Reader. A PDF "matches" a document page for page when it has the same page count, each page starts and ends with the same content, and the headers, footers, and page numbers are the same as in Word.
+
+**Redlines and comments.** A redline means Word's own tracked changes, and a comment means a Word comment. Strikethrough, underline, or colored text is not a redline, and a note typed into the body is not a comment. Check them in Word's review tools: each tracked change's type, text, author, and whether it is accepted; each comment's text, author, the exact text it is attached to, its replies, and whether it is resolved. When a Setup step makes a change as someone else, set Word's user name to that person's full name first.
+
 **Cleanup.** What the operator undoes after judging, pass or fail, even if the run was stopped. It removes everything the run and its Setup created or changed: delete events without notifying attendees, trash emails in every mailbox that holds a copy, discard drafts, delete files, folders, contacts, and labels, and put back anything renamed, moved, archived, or edited. Workflows run one after another in a session, so anything left behind changes the next one.
 
 ## World
@@ -122,6 +126,7 @@ Once.
 2. **Employer accounts.** For each employer, a Google Workspace or Microsoft 365 tenant on its domain, in the time zone in `config.world.md`. One account per person.
 3. **Outside accounts.** Add every external domain to a tenant, the employer's or a separate one. One account per outside person, in an organizational unit named External.
 4. **Harness.** Connect each employer to the harness, per `config.harness.md`.
+5. **Reference document.** Build `Reference.docx` in Microsoft Word, exactly as described under Reference document below, and keep it with your private config files.
 
 ## Reset
 
@@ -145,6 +150,18 @@ Then open each account and check that it is empty.
 - **Contacts.** Each person gets the outside people at companies whose contact they are.
 - **Calendar.** Everyone gets a few recurring weekly meetings, some with their outside contacts.
 - **Files.** A folder named "Sales" for the VP Sales, "Product" for the CPO, "Company" for the CEO, and "People" for HR, holding a document named "Employee Handbook".
+- **Assistant storage**, if the harness has `harness-files`. Add `Reference.docx` for every person.
+
+**Reference document.** The Word document the export workflows start from. Build it once, exactly like this, and check it in Word before the first session.
+
+- US Letter, portrait, 1-inch margins. Body text in the Normal style, Georgia 11 point.
+- Header: "Reference Document", right-aligned. Footer: "Page X of Y", centered, built from page number fields.
+- The title "Quarterly Operations Review" in the Title style.
+- Heading 1 "Summary": two paragraphs, then a bulleted list of three items with one second-level bullet under the second item.
+- Heading 1 "Figures": a table with columns Region, Q1, Q2, and Q3 and 40 data rows. The header row is bold, shaded light gray, and set to repeat. The table runs onto page 2.
+- Heading 2 "Notes", under Figures: a numbered list of three items with items a and b under item 2, then a sentence whose words "example site" link to https://example.com.
+- A page break, then Heading 1 "Appendix" with one paragraph.
+- Exactly three pages in Word, with the Appendix alone on page 3.
 
 ## Running
 
@@ -191,7 +208,7 @@ Check every workflow against this list before it goes in. Each line exists becau
 9. Pass and fail lines name one exact thing and are checkable in the service. "The email is professional" is not a line. "{contact}'s mailbox receives one email that names {time}" is. Write "during the run" when a count matters.
 10. At least one fail line covers a side effect: the wrong recipient, the wrong record, a changed event.
 11. Anything a workflow needs that its Setup does not create is in the Seed.
-12. A workflow reads the same for any employer and any provider. Write "document", not "Google Doc", and "mail", not "Gmail".
+12. A workflow reads the same for any employer and any provider. Write "document", not "Google Doc", and "mail", not "Gmail". File formats such as Word and PDF are fine to name.
 13. No two workflows test the same thing. The same action on different data is a duplicate.
 
 **World**
