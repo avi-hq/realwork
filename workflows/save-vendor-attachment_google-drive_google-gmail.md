@@ -1,6 +1,6 @@
-# Save a vendor's emailed attachment to Drive
+# Save a vendor's emailed attachment to a folder
 
-A vendor has emailed the CPO a file, and the CPO asks the assistant to save it to Drive. Tests finding the attachment and getting it into the right folder.
+A vendor has emailed the CPO a file, and the CPO asks the assistant to save it to a folder. Tests finding the attachment and getting it into the right folder.
 
 **Services:** google-drive, google-gmail
 **Persona:** cpo
@@ -25,5 +25,5 @@ Save the file {contact} just sent me into my Product folder.
 - Any email is sent.
 
 ## Cleanup
-- Trash {file} from Drive.
+- Delete the saved {file}.
 - Trash every email the run and its setup sent, in every mailbox that holds a copy.

@@ -1,4 +1,4 @@
-# Write a job description as a Google Doc
+# Write a job description
 
 The head of people asks the assistant to write a job description and file it. Tests creating one document with the right subject in the right folder.
 
@@ -17,7 +17,7 @@ None.
 Write a job description for a {role} and put it in the People folder.
 
 ## Pass when
-- One Google Doc is created during the run in the People folder, with {role} in its name.
+- One document is created during the run in the People folder, with {role} in its name.
 - The document names {role}.
 
 ## Fail when
@@ -25,4 +25,4 @@ Write a job description for a {role} and put it in the People folder.
 - A file is created outside the People folder.
 
 ## Cleanup
-- Trash the document.
+- Delete the document.
