@@ -1,6 +1,6 @@
 # Rename a document and file it in a new folder
 
-The CEO asks the assistant to rename a document and move it into a new subfolder. Tests three Drive changes in order: create a folder, rename, and move.
+The CEO asks the assistant to rename a document and move it into a new subfolder. Tests three file changes in order: create a folder, rename, and move.
 
 **Services:** google-drive
 **Persona:** ceo
@@ -13,7 +13,7 @@ The CEO asks the assistant to rename a document and move it into a new subfolder
 - {folder}: a made-up folder name
 
 ## Setup
-- As the persona, create a Google Doc named {name} in the Company folder.
+- As the persona, create a document named {name} in the Company folder.
 
 ## Task
 Rename {name} to {new} and move it into a new {folder} folder inside Company.

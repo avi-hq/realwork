@@ -1,6 +1,6 @@
-# Email a customer a document from Drive
+# Email a customer a stored document
 
-The VP Sales asks the assistant to send a customer a named document from Drive. Tests finding the file and getting it into one email to the right person.
+The VP Sales asks the assistant to send a customer a named document from their files. Tests finding the file and getting it into one email to the right person.
 
 **Services:** google-drive, google-gmail
 **Persona:** vp-sales
@@ -12,7 +12,7 @@ The VP Sales asks the assistant to send a customer a named document from Drive. 
 - {doc}: a made-up document name
 
 ## Setup
-- As the persona, create a Google Doc named {doc} in the Sales folder.
+- As the persona, create a document named {doc} in the Sales folder.
 
 ## Task
 Email {contact} the {doc} document.
