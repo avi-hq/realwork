@@ -99,7 +99,7 @@ Move my {event} with {contact} to {new}.
 
 **Outside people** are real accounts on their company's domain. The operator signs in as them to read, send, and reply. They can live in the employer's own tenant, with each external domain added as a secondary domain and the outside people in their own organizational unit, or in a separate tenant. Either way, nothing else exists on those domains: no catch-all, no forwarding, no aliases.
 
-The current workflows need at least one employer, one customer, and one vendor.
+The current workflows need at least one employer, two customers, and one vendor.
 
 ## Operator
 
@@ -153,7 +153,7 @@ Then open each account and check that it is empty.
 - **Contacts.** Each person gets the outside people at companies whose contact they are.
 - **Calendar.** Everyone gets a few recurring weekly meetings, some with their outside contacts.
 - **Files.** A folder named "Sales" for the VP Sales, "Product" for the CPO, and "People" for HR, holding a document named "Employee Handbook".
-- **Assistant storage**, if the harness has `harness-files`. Add `Reference.docx` for every person.
+- **Assistant storage**, if the harness has `harness-files`. Add `Reference.docx` to the storage of each persona whose workflows use it.
 
 **Reference document.** The Word document the export workflows start from. Build it once, exactly like this, and check it in Word before the first session.
 
