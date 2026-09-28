@@ -11,7 +11,7 @@ The CPO asks the assistant to make the page with a wide table landscape. Tests u
 - {name}: a made-up file name ending in .docx
 
 ## Setup
-- As the persona, in Microsoft Word, create {name}: three portrait US Letter pages, a header reading "Product Plan", a footer page number field, and an eight-column table on page 2 that runs past the right margin. Save it and add it to the assistant's own file storage, not through chat.
+- As the persona, in Microsoft Word, create {name}: three portrait US Letter pages, a header reading "Product Plan", a footer page number field, and an eight-column table on page 2, 8.5 inches wide, so it runs past the right margin in portrait. Save it and add it to the assistant's own file storage, not through chat.
 
 ## Task
 Make page 2 of {name} landscape so the wide table fits. Keep the other pages portrait.

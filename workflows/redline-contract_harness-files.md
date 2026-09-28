@@ -26,7 +26,7 @@ Redline {name}: add "{clause}" as a new clause after clause {after}, delete "{re
 - {remove} appears as a tracked deletion.
 - {old} appears as a tracked deletion and {new} as a tracked insertion beside it.
 - Every tracked change is credited to the persona's full name.
-- There are exactly these four tracked changes, none accepted, and all other text and formatting is unchanged.
+- No other tracked change exists, none is accepted, and all other text and formatting is unchanged.
 
 ## Fail when
 - Any edit is shown with strikethrough, underline, or color instead of as a Word tracked change.
