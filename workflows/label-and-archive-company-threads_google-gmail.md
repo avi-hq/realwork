@@ -9,7 +9,7 @@ The VP Sales asks the assistant to label everything from one company and clear i
 
 ## Inputs
 - {company}: a customer whose contact is the persona
-- {other}: a different external company
+- {other}: a different customer whose contact is the persona
 - {label}: a made-up label name
 
 ## Setup

@@ -1,9 +1,9 @@
 # Change a document and bring its PDF up to date
 
-The head of people asks the assistant to change a document's title and update the PDF already made from it. Tests replacing the existing PDF so it reflects the change and is otherwise identical, rather than leaving a stale PDF or making a second one.
+The CEO asks the assistant to change a document's title and update the PDF already made from it. Tests replacing the existing PDF so it reflects the change and is otherwise identical, rather than leaving a stale PDF or making a second one.
 
 **Services:** harness-files
-**Persona:** hr
+**Persona:** ceo
 **Level:** 1
 **Frequency:** common
 

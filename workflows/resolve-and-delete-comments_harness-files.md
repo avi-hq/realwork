@@ -1,9 +1,9 @@
 # Resolve some comments and delete another
 
-A coworker left three comments on the handbook, and the head of people asks the assistant to mark two as resolved and delete one that is out of date. Tests telling resolving apart from deleting and acting on exactly the right comments.
+A coworker left three comments on the handbook, and the CEO asks the assistant to mark two as resolved and delete one that is out of date. Tests telling resolving apart from deleting and acting on exactly the right comments.
 
 **Services:** harness-files
-**Persona:** hr
+**Persona:** ceo
 **Level:** 2
 **Frequency:** uncommon
 

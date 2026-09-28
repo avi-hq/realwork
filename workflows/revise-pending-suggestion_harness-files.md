@@ -1,9 +1,9 @@
 # Reword a suggestion that is still pending
 
-The VP Sales asks the assistant to change the wording of their own pending suggested insertion before sending the document back. Tests editing an existing tracked insertion so it stays one suggestion with the new words, instead of stacking a new change on top of it or accepting it.
+The CEO asks the assistant to change the wording of their own pending suggested insertion before sending the document back. Tests editing an existing tracked insertion so it stays one suggestion with the new words, instead of stacking a new change on top of it or accepting it.
 
 **Services:** harness-files
-**Persona:** vp-sales
+**Persona:** ceo
 **Level:** 2
 **Frequency:** common
 

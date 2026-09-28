@@ -1,9 +1,9 @@
 # Add comments anchored to exact phrases
 
-The CPO asks the assistant to leave three review comments on a vendor's spec, each on a specific phrase. Tests creating real Word comments, each attached to exactly the right text and credited to the persona.
+The CEO asks the assistant to leave three review comments on a vendor's spec, each on a specific phrase. Tests creating real Word comments, each attached to exactly the right text and credited to the persona.
 
 **Services:** harness-files
-**Persona:** cpo
+**Persona:** ceo
 **Level:** 1
 **Frequency:** common
 

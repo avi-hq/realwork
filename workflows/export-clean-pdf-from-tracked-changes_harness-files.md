@@ -1,9 +1,9 @@
 # Export a clean PDF from a document with tracked changes
 
-The VP Sales asks for a send-ready PDF of a document that still has tracked changes and a comment. Tests that the PDF shows the edited text with no markup or comments, while the document itself keeps them unresolved.
+The CEO asks for a send-ready PDF of a document that still has tracked changes and a comment. Tests that the PDF shows the edited text with no markup or comments, while the document itself keeps them unresolved.
 
 **Services:** harness-files
-**Persona:** vp-sales
+**Persona:** ceo
 **Level:** 2
 **Frequency:** common
 

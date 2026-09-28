@@ -1,15 +1,15 @@
 # Reply to a comment and correct your own
 
-A vendor asked a question in a comment, and the CPO asks the assistant to reply to it and fix the wording of the CPO's own earlier comment. Tests replying inside the existing thread and editing a comment in place, rather than adding new comments.
+A vendor asked a question in a comment, and the CEO asks the assistant to reply to it and fix the wording of the CEO's own earlier comment. Tests replying inside the existing thread and editing a comment in place, rather than adding new comments.
 
 **Services:** harness-files
-**Persona:** cpo
+**Persona:** ceo
 **Level:** 2
 **Frequency:** common
 
 ## Inputs
 - {name}: a made-up file name ending in .docx
-- {contact}: a known person at a vendor whose contact is the persona
+- {contact}: a known person at a vendor
 - {question}: a made-up question
 - {reply}: a made-up answer
 - {mine}: a made-up comment with a typo

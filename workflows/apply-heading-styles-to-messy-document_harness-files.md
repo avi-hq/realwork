@@ -1,9 +1,9 @@
 # Replace hand-made headings with real heading styles
 
-HR has a handbook whose headings were made bold and large by hand and whose body text mixes three fonts, and asks the assistant to clean it up. Tests finding which lines are headings, applying real heading styles, and making the body consistent without changing any words.
+The CEO has an employee handbook whose headings were made bold and large by hand and whose body text mixes three fonts, and asks the assistant to clean it up. Tests finding which lines are headings, applying real heading styles, and making the body consistent without changing any words.
 
 **Services:** harness-files
-**Persona:** hr
+**Persona:** ceo
 **Level:** 2
 **Frequency:** uncommon
 

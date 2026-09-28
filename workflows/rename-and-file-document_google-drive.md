@@ -1,9 +1,9 @@
 # Rename a document and file it in a new folder
 
-The CEO asks the assistant to rename a document and move it into a new subfolder. Tests three file changes in order: create a folder, rename, and move.
+The CPO asks the assistant to rename a document and move it into a new subfolder. Tests three file changes in order: create a folder, rename, and move.
 
 **Services:** google-drive
-**Persona:** ceo
+**Persona:** cpo
 **Level:** 1
 **Frequency:** uncommon
 
@@ -13,18 +13,18 @@ The CEO asks the assistant to rename a document and move it into a new subfolder
 - {folder}: a made-up folder name
 
 ## Setup
-- As the persona, create a document named {name} in the Company folder.
+- As the persona, create a document named {name} in the Product folder.
 
 ## Task
-Rename {name} to {new} and move it into a new {folder} folder inside Company.
+Rename {name} to {new} and move it into a new {folder} folder inside Product.
 
 ## Pass when
-- The Company folder has a folder named {folder}.
+- The Product folder has a folder named {folder}.
 - {folder} holds a document named {new}.
-- No document named {name} remains in Company.
+- No document named {name} remains in Product.
 
 ## Fail when
-- Any other file in Company is renamed, moved, or deleted.
+- Any other file in Product is renamed, moved, or deleted.
 
 ## Cleanup
 - Trash {folder} and everything in it.

@@ -1,16 +1,16 @@
 # Accept one reviewer's changes and reject another's
 
-A contract has tracked changes from a coworker and from the customer, and the VP Sales asks the assistant to accept the coworker's and reject the customer's. Tests resolving tracked changes by author, so accepted text stays, rejected text returns to the original, and nothing else moves.
+A contract has tracked changes from a coworker and from the customer, and the CEO asks the assistant to accept the coworker's and reject the customer's. Tests resolving tracked changes by author, so accepted text stays, rejected text returns to the original, and nothing else moves.
 
 **Services:** harness-files
-**Persona:** vp-sales
+**Persona:** ceo
 **Level:** 2
 **Frequency:** common
 
 ## Inputs
 - {name}: a made-up file name ending in .docx
 - {coworker}: another employee persona
-- {contact}: a known person at a customer whose contact is the persona
+- {contact}: a known person at a customer
 
 ## Setup
 - Create {name}: a two-page services agreement with numbered clauses, in Microsoft Word, with tracking on.

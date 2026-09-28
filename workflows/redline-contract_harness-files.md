@@ -1,9 +1,9 @@
 # Redline a contract with an insertion, a deletion, and a replacement
 
-The VP Sales asks the assistant to mark up a customer contract with three different edits. Tests making every edit as a Word tracked change credited to the persona, with nothing changed outside the edits and nothing accepted.
+The CEO asks the assistant to mark up a customer contract with three different edits. Tests making every edit as a Word tracked change credited to the persona, with nothing changed outside the edits and nothing accepted.
 
 **Services:** harness-files
-**Persona:** vp-sales
+**Persona:** ceo
 **Level:** 1
 **Frequency:** common
 

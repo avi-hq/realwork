@@ -1,9 +1,9 @@
 # Fill in a template without losing its formatting
 
-The VP Sales asks the assistant to fill in a proposal template whose placeholders each carry different formatting. Tests replacing text in a heading, a table cell, a body sentence, and the footer while every replacement keeps the formatting of what it replaced.
+The CEO asks the assistant to fill in a proposal template whose placeholders each carry different formatting. Tests replacing text in a heading, a table cell, a body sentence, and the footer while every replacement keeps the formatting of what it replaced.
 
 **Services:** harness-files
-**Persona:** vp-sales
+**Persona:** ceo
 **Level:** 1
 **Frequency:** common
 

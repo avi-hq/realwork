@@ -1,9 +1,9 @@
 # Export a document to a PDF that matches it page for page
 
-The CPO asks the assistant to export a formatted Word document to PDF. Tests that the PDF keeps the document's layout exactly: the same pages, fonts, header, footer, and repeating table header.
+The CEO asks the assistant to export a formatted Word document to PDF. Tests that the PDF keeps the document's layout exactly: the same pages, fonts, header, footer, and repeating table header.
 
 **Services:** harness-files
-**Persona:** cpo
+**Persona:** ceo
 **Level:** 1
 **Frequency:** common
 

@@ -1,15 +1,15 @@
 # Make the edits a customer asked for in comments
 
-A customer left comments asking for two changes to a contract, and the VP Sales asks the assistant to make them and reply to each. Tests reading comment threads, making each requested change as a tracked edit, and replying without resolving or deleting the customer's comments.
+A customer left comments asking for two changes to a contract, and the CEO asks the assistant to make them and reply to each. Tests reading comment threads, making each requested change as a tracked edit, and replying without resolving or deleting the customer's comments.
 
 **Services:** harness-files
-**Persona:** vp-sales
+**Persona:** ceo
 **Level:** 2
 **Frequency:** common
 
 ## Inputs
 - {name}: a made-up file name ending in .docx
-- {contact}: a known person at a customer whose contact is the persona
+- {contact}: a known person at a customer
 - {term}: a phrase in the agreement, such as "12 months"
 - {newterm}: a different phrase, such as "24 months"
 - {sentence}: a sentence in the agreement

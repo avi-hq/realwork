@@ -1,9 +1,9 @@
 # Export one section of a document to PDF
 
-The CPO asks the assistant to export only the appendix of a document. Tests picking out exactly one section and exporting it with the document's formatting.
+The CEO asks the assistant to export only the appendix of a document. Tests picking out exactly one section and exporting it with the document's formatting.
 
 **Services:** harness-files
-**Persona:** cpo
+**Persona:** ceo
 **Level:** 2
 **Frequency:** uncommon
 

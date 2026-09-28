@@ -1,9 +1,9 @@
 # Export a PDF with heading bookmarks and working links
 
-The software engineer asks the assistant for a PDF readers can navigate. Tests that the PDF carries bookmarks mirroring the heading structure and keeps the hyperlink clickable, without changing the layout.
+The CEO asks the assistant for a PDF readers can navigate. Tests that the PDF carries bookmarks mirroring the heading structure and keeps the hyperlink clickable, without changing the layout.
 
 **Services:** harness-files
-**Persona:** software-engineer
+**Persona:** ceo
 **Level:** 1
 **Frequency:** uncommon
 

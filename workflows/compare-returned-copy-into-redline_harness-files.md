@@ -1,14 +1,14 @@
 # Turn an untracked returned copy into a redline
 
-A customer sent back an edited contract without tracking changes, and the VP Sales asks the assistant for a redline against the version that was sent. Tests comparing two documents so every difference, and only the differences, shows up as a tracked change.
+A customer sent back an edited contract without tracking changes, and the CEO asks the assistant for a redline against the version that was sent. Tests comparing two documents so every difference, and only the differences, shows up as a tracked change.
 
 **Services:** harness-files
-**Persona:** vp-sales
+**Persona:** ceo
 **Level:** 2
 **Frequency:** common
 
 ## Inputs
-- {contact}: a known person at a customer whose contact is the persona
+- {contact}: a known person at a customer
 - {sent}: a made-up file name ending in .docx
 - {returned}: a different made-up file name ending in .docx
 - {redline}: a third made-up file name ending in .docx

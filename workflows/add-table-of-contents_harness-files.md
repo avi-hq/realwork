@@ -1,9 +1,9 @@
 # Add a table of contents with correct page numbers
 
-The software engineer asks the assistant to add a table of contents to a four-page document. Tests inserting a real, generated table of contents whose entries and page numbers match the headings.
+The CEO asks the assistant to add a table of contents to a four-page document. Tests inserting a real, generated table of contents whose entries and page numbers match the headings.
 
 **Services:** harness-files
-**Persona:** software-engineer
+**Persona:** ceo
 **Level:** 2
 **Frequency:** uncommon
 

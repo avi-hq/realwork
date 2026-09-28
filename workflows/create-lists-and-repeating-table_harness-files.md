@@ -1,9 +1,9 @@
 # Build nested numbered lists and a table whose header repeats on every page
 
-The CPO asks the assistant for a product spec with nested lists and a long table. Tests real Word list formatting at two levels, and a table header row that repeats on each page instead of being copied by hand.
+The CEO asks the assistant for a product spec with nested lists and a long table. Tests real Word list formatting at two levels, and a table header row that repeats on each page instead of being copied by hand.
 
 **Services:** harness-files
-**Persona:** cpo
+**Persona:** ceo
 **Level:** 1
 **Frequency:** common
 

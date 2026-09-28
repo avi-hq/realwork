@@ -14,7 +14,6 @@ EXAMPLE. Copy this file to `config.world.md` and put in domains you own. Keep it
 #### ceo
 Nadia Farouk, Chief Executive Officer. nadia@fernwood.example.
 - Claire Whitcombe runs sales. Owen Blackwood runs product. Priya Raman runs people.
-- Company documents live in the Company folder.
 
 #### cpo
 Owen Blackwood, Chief Product Officer. owen@fernwood.example.

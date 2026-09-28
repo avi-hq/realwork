@@ -1,9 +1,9 @@
 # Export an A4 PDF from a US Letter document
 
-The VP Sales asks for an A4 PDF of a US Letter document for a customer who prints on A4. Tests changing the paper size for the export only, with nothing clipped and the document itself left as Letter.
+The CEO asks for an A4 PDF of a US Letter document for a customer who prints on A4. Tests changing the paper size for the export only, with nothing clipped and the document itself left as Letter.
 
 **Services:** harness-files
-**Persona:** vp-sales
+**Persona:** ceo
 **Level:** 1
 **Frequency:** uncommon
 
