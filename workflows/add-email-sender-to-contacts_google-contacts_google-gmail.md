@@ -1,9 +1,9 @@
 # Add the sender of an email to contacts
 
-Someone new has emailed the CEO, and the CEO asks the assistant to add them to contacts. Tests finding the email and pulling the person's name, address, and company into one new contact.
+Someone new has emailed the head of people, who asks the assistant to add them to contacts. Tests finding the email and pulling the person's name, address, and company into one new contact.
 
 **Services:** google-contacts, google-gmail
-**Persona:** ceo
+**Persona:** hr
 **Level:** 4
 **Frequency:** common
 

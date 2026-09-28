@@ -10,6 +10,7 @@ The assistant under test is the harness. It works for an employer: a test compan
 README.md                   rules, setup, how to run, guidelines
 config.world.example.md     the test company, its people, and the outside companies it works with
 config.harness.example.md   the assistant under test: its services, how to connect, run, and reset it
+sequence.md                 which workflows are solo or shared, and the order they run in
 workflows/                  one file per workflow
 runs/                       one file per session's results
 ```
@@ -68,7 +69,7 @@ Move my {event} with {contact} to {new}.
 
 `harness-files` is the one service that isn't a company's. It means the assistant's own file storage, for harnesses that have one.
 
-**Persona.** One of the five roles every employer has: `ceo`, `cpo`, `hr`, `software-engineer`, `vp-sales`.
+**Persona.** One of the five roles every employer has: `ceo`, `cpo`, `hr`, `software-engineer`, `vp-sales`. A solo workflow runs in its persona's lane.
 
 **Level.** 1 simple, one service. 2 complex, one service. 3 simple, two or more services. 4 complex, two or more services. Simple means everything needed is in the task. Complex means the assistant has to find details in existing emails, events, files, or contacts.
 
@@ -82,6 +83,10 @@ Move my {event} with {contact} to {new}.
 
 **Pass when** and **Fail when.** Each line is binary, checkable in the real service, and names the exact person, thread, event, file, or contact. Never a line about tone or quality. Lines are judged on what changed during the run. A workflow passes only when every pass line holds and no fail line fires.
 
+**Checking documents.** Check Word documents in Microsoft Word, the reference for how a `.docx` looks: styles, page setup, fields, list formatting, and tracked changes. Check PDFs in a viewer that shows page size, fonts, and bookmarks, such as Adobe Acrobat Reader. A PDF "matches" a document page for page when it has the same page count, each page starts and ends with the same content, and the headers, footers, and page numbers are the same as in Word.
+
+**Redlines and comments.** A redline means Word's own tracked changes, and a comment means a Word comment. Strikethrough, underline, or colored text is not a redline, and a note typed into the body is not a comment. Check them in Word's review tools: each tracked change's type, text, author, and whether it is accepted; each comment's text, author, the exact text it is attached to, its replies, and whether it is resolved. When a Setup step makes a change as someone else, set Word's user name to that person's full name first.
+
 **Cleanup.** What the operator undoes after judging, pass or fail, even if the run was stopped. It removes everything the run and its Setup created or changed: delete events without notifying attendees, trash emails in every mailbox that holds a copy, discard drafts, delete files, folders, contacts, and labels, and put back anything renamed, moved, archived, or edited. Workflows run one after another in a session, so anything left behind changes the next one.
 
 ## World
@@ -94,7 +99,7 @@ Move my {event} with {contact} to {new}.
 
 **Outside people** are real accounts on their company's domain. The operator signs in as them to read, send, and reply. They can live in the employer's own tenant, with each external domain added as a secondary domain and the outside people in their own organizational unit, or in a separate tenant. Either way, nothing else exists on those domains: no catch-all, no forwarding, no aliases.
 
-The current workflows need at least one employer, one customer, and one vendor.
+The current workflows need at least one employer, two customers, and one vendor.
 
 ## Operator
 
@@ -121,11 +126,14 @@ Once.
 1. **Domains.** Copy `config.world.example.md` to `config.world.md`. Register one domain per employer and one per external company, on mixed top-level domains as real companies would. Write them in.
 2. **Employer accounts.** For each employer, a Google Workspace or Microsoft 365 tenant on its domain, in the time zone in `config.world.md`. One account per person.
 3. **Outside accounts.** Add every external domain to a tenant, the employer's or a separate one. One account per outside person, in an organizational unit named External.
-4. **Harness.** Connect each employer to the harness, per `config.harness.md`.
+4. **Harness.** Connect each employer to the harness, per `config.harness.md`. Each person's name in the harness is their full name from `config.world.md`, because tracked changes and comments are credited to it.
+5. **Reference document.** Build `Reference.docx` in Microsoft Word, exactly as described under Reference document below, and keep it with your private config files.
 
 ## Reset
 
 A session is one sitting in which workflows run against one employer. Reset runs before the first workflow, Clear then Seed, and after the last, Clear only. Every session starts from the same accounts and leaves nothing behind.
+
+Each lane resets its own accounts, at the same time as the other lanes: its persona, the outside people whose contact is that persona, and that persona's harness storage. The Clear after the session covers every account, because the shared phase touches accounts across lanes.
 
 Clear touches only the accounts in `config.world.md` and their harness sign-ins. Never any other account.
 
@@ -144,30 +152,55 @@ Then open each account and check that it is empty.
 
 - **Contacts.** Each person gets the outside people at companies whose contact they are.
 - **Calendar.** Everyone gets a few recurring weekly meetings, some with their outside contacts.
-- **Files.** A folder named "Sales" for the VP Sales, "Product" for the CPO, "Company" for the CEO, and "People" for HR, holding a document named "Employee Handbook".
+- **Files.** A folder named "Sales" for the VP Sales, "Product" for the CPO, and "People" for HR, holding a document named "Employee Handbook".
+- **Assistant storage**, if the harness has `harness-files`. Add `Reference.docx` to the storage of each persona whose workflows use it.
+
+**Reference document.** The Word document the export workflows start from. Build it once, exactly like this, and check it in Word before the first session.
+
+- US Letter, portrait, 1-inch margins. Georgia everywhere: set the theme fonts for headings and body to Georgia, so Title, headings, body, header, and footer all use it. Body text in the Normal style, 11 point.
+- Header: "Reference Document", right-aligned. Footer: "Page X of Y", centered, built from page number fields.
+- The title "Quarterly Operations Review" in the Title style.
+- Heading 1 "Summary": two paragraphs, then a bulleted list of three items with one second-level bullet under the second item.
+- Heading 1 "Figures": a table with columns Region, Q1, Q2, and Q3 and 40 data rows. The header row is bold, shaded light gray, and set to repeat. The table runs onto page 2.
+- Heading 2 "Notes", under Figures: a numbered list of three items with items a and b under item 2, then a sentence whose words "example site" link to https://example.com.
+- A page break, then Heading 1 "Appendix" with one paragraph.
+- Exactly three pages in Word, with the Appendix alone on page 3.
 
 ## Running
 
-1. Pick a harness and an employer. Filter workflows by level, service, persona, or frequency. Drop any the harness or employer cannot run.
-2. **Reset before:** Clear, then Seed.
-3. Run each workflow once, one after another:
+`sequence.md` decides what runs and in what order. Nothing else does.
+
+1. **Pick** a harness and an employer. A workflow whose services the harness or employer lacks is skipped and recorded as skipped.
+2. **Reset before.** Every lane clears and seeds its own accounts, at the same time.
+3. **Solo phase.** Every lane runs at the same time, each with its own operator signed in only as that lane's persona. Inside a lane, run each workflow once, one at a time, in the order `sequence.md` lists:
    1. Pick its inputs and write them down.
    2. Do its Setup.
    3. Give the task as the persona, in a new conversation.
    4. Judge every pass and fail line.
    5. Do its Cleanup, whatever the result.
-4. **Reset after:** Clear.
-5. Record the session in `runs/YYYY-MM-DD-harness-employer.md`, one row per workflow. Time is minutes and seconds from sending the task to the assistant saying it is done, or to the operator stopping it. Report pass rate, coverage, and median time by level, by service, and by employer.
+4. **Shared phase.** After every lane has finished, run the Shared workflows one at a time, in order, the same five steps each. No lane is running, so their lines can count anything on any account.
+5. **Reset after.** Clear every account.
+6. **Record** the session in `runs/YYYY-MM-DD-harness-employer.md`. Copy `sequence.md`'s headings and workflow order, and fill in one row per workflow. Every workflow in `sequence.md` gets a row, run or skipped, so a missing row means a missed workflow. Time is minutes and seconds from sending the task to the assistant saying it is done, or to the operator stopping it. Report pass rate, coverage, and median time by level, by service, by lane, and by employer.
 
 ```markdown
 # 2026-09-22 avi fernwood
 
 **Workflow set:** v0.1
 
+## Solo
+
+### vp-sales
+
 | Workflow | Inputs | Time | Result | Failed line |
 |---|---|---|---|---|
-| reschedule-customer-meeting_google-calendar | Dana, Renewal sync, Tue 2pm to Wed 10am | 0:48 | pass | |
+| draft-customer-reply-without-sending_google-gmail | Dana, Renewal question | 0:52 | pass | |
 | offer-customer-open-times_google-calendar_google-gmail | Ravi | 2:15 | fail | None of the three overlaps an event on the persona's calendar. |
+
+## Shared
+
+| Workflow | Inputs | Time | Result | Failed line |
+|---|---|---|---|---|
+| find-time-with-two-coworkers_google-calendar | Nadia, Mateo, Q4 sync | 1:40 | pass | |
 ```
 
 ## Versioning
@@ -191,18 +224,20 @@ Check every workflow against this list before it goes in. Each line exists becau
 9. Pass and fail lines name one exact thing and are checkable in the service. "The email is professional" is not a line. "{contact}'s mailbox receives one email that names {time}" is. Write "during the run" when a count matters.
 10. At least one fail line covers a side effect: the wrong recipient, the wrong record, a changed event.
 11. Anything a workflow needs that its Setup does not create is in the Seed.
-12. A workflow reads the same for any employer and any provider. Write "document", not "Google Doc", and "mail", not "Gmail".
+12. A workflow reads the same for any employer and any provider. Write "document", not "Google Doc", and "mail", not "Gmail". File formats such as Word and PDF are fine to name.
 13. No two workflows test the same thing. The same action on different data is a duplicate.
+14. Every workflow is listed in `sequence.md` exactly once: under its persona's lane if solo, under Shared if not. A workflow missing from `sequence.md` never runs.
+15. A workflow is solo only if it touches nothing but its persona's accounts, its persona's harness storage, and outside people whose contact is that persona. A coworker used only as a name typed into a document does not count. Anything more makes it shared, and shared workflows stay few.
 
 **World**
 
-14. Never invent a domain. Every domain in `config.world.md` is one you own. `.example` belongs only in the example.
-15. An outside person is never on an employer's domain, and no two companies share a root domain. Subdomains of one root are still one root.
-16. Every outside person is a real account. No catch-all, forwarding, or alias that lets mail cross domains.
-17. Nothing about a person, company, or domain lives outside `config.world.md`. Nothing about the assistant lives outside `config.harness.md`.
-18. Facts name roles, not employers, so they hold at every employer.
+16. Never invent a domain. Every domain in `config.world.md` is one you own. `.example` belongs only in the example.
+17. An outside person is never on an employer's domain, and no two companies share a root domain. Subdomains of one root are still one root.
+18. Every outside person is a real account. No catch-all, forwarding, or alias that lets mail cross domains.
+19. Nothing about a person, company, or domain lives outside `config.world.md`. Nothing about the assistant lives outside `config.harness.md`.
+20. Facts name roles, not employers, so they hold at every employer.
 
 **Changing anything**
 
-19. Renaming or removing anything means searching the whole repo for the old value and fixing every hit.
-20. Do not add documents. Rules go in this README, the world in `config.world.md`, the assistant in `config.harness.md`. If it does not fit, it is not simple enough yet.
+21. Renaming or removing anything means searching the whole repo for the old value and fixing every hit.
+22. Do not add documents. Rules go in this README, the order in `sequence.md`, the world in `config.world.md`, the assistant in `config.harness.md`. If it does not fit, it is not simple enough yet.

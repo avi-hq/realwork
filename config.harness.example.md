@@ -6,7 +6,7 @@ EXAMPLE. Copy this file to `config.harness.md` and fill it in for the assistant 
 
 ## Connect
 
-Once per employer. Each person signs in at https://avi.run with their employer account and connects Google when Avi asks.
+Once per employer. Each person signs in at https://avi.run with their employer account and connects Google when Avi asks. Set each person's Avi profile name to their full name, since Avi credits tracked changes and comments to it.
 
 ## Run
 
