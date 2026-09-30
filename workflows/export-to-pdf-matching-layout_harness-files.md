@@ -21,7 +21,7 @@ Export Reference.docx to a PDF named {pdf}.
 - It matches Reference.docx page for page: three US Letter pages, each starting and ending with the same content as in Word.
 - The header and the "Page X of Y" footer appear on every page, with the right numbers.
 - The table's header row repeats at the top of page 2.
-- Every font is embedded and is the same font Word uses for that text.
+- Every piece of text shows in the same font as in Reference.docx.
 
 ## Fail when
 - Reference.docx is changed.

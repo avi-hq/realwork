@@ -1,6 +1,6 @@
 # Build nested numbered lists and a table whose header repeats on every page
 
-The CEO asks the assistant for a product spec with nested lists and a long table. Tests real Word list formatting at two levels, and a table header row that repeats on each page instead of being copied by hand.
+The CEO asks the assistant for a product spec with nested lists and a long table. Tests a two-level list, a bulleted list, and a long table whose header row shows at the top of every page it runs onto.
 
 **Services:** harness-files
 **Persona:** ceo
@@ -19,14 +19,14 @@ Create a Word document named {name} with a product spec for {product}. Include a
 
 ## Pass when
 - One document named {name} is created during the run.
-- The requirements use Word's numbered list formatting, 1 to 3, with each item's two sub-points at the second list level, lettered a and b.
-- The risks use Word's bulleted list formatting.
-- The table has 3 columns and 41 rows. Its first row is bold, shaded light gray, and set to repeat as a header row.
+- The requirements are numbered 1 to 3, and each has two sub-points indented beneath it, lettered a and b.
+- The risks are a bulleted list.
+- The table has 3 columns and 41 rows. Its first row is bold and shaded light gray.
 - On every page the table spans, that header row appears at the top of the table.
 
 ## Fail when
-- Any list number, letter, or bullet is typed text instead of list formatting.
-- The header row is copied by hand onto later pages instead of set to repeat.
+- A sub-point is not indented beneath its requirement, or a number, letter, or bullet is missing.
+- The header row appears anywhere in the table other than the top of a page, or is missing from the top of a page the table runs onto.
 - Any other file is created, changed, or deleted.
 
 ## Cleanup

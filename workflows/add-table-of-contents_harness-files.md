@@ -1,6 +1,6 @@
 # Add a table of contents with correct page numbers
 
-The CEO asks the assistant to add a table of contents to a four-page document. Tests inserting a real, generated table of contents whose entries and page numbers match the headings.
+The CEO asks the assistant to add a table of contents to a four-page document. Tests inserting a table of contents whose entries and page numbers match the headings.
 
 **Services:** harness-files
 **Persona:** ceo
@@ -17,13 +17,13 @@ The CEO asks the assistant to add a table of contents to a four-page document. T
 Add a table of contents at the start of {name}, on its own page.
 
 ## Pass when
-- Page 1 holds a table of contents that is a generated Word field, built from the headings.
+- Page 1 holds a table of contents built from the headings.
 - It lists all five Heading 1 and all three Heading 2 entries, with the Heading 2 entries indented.
 - Each entry's page number matches the page its heading is on.
 - The rest of the document starts on page 2, otherwise unchanged.
 
 ## Fail when
-- The table of contents is typed text instead of a field.
+- The table of contents lists something that is not a heading, or its page numbers are out of order.
 - Any heading is missing or shows the wrong page number.
 - Any other file is created, changed, or deleted.
 

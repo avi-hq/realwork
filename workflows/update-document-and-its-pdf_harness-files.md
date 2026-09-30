@@ -19,7 +19,7 @@ The CEO asks the assistant to change a document's title and update the PDF alrea
 Change the title of {name} to {title}, then update {pdf} to match.
 
 ## Pass when
-- The title of {name} reads {title}, still in the Title style.
+- The title of {name} reads {title}, set the same way as the old title.
 - {pdf} shows {title} as its title and otherwise matches {name} page for page.
 - There is exactly one PDF named {pdf}.
 

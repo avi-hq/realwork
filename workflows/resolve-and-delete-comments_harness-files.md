@@ -23,7 +23,7 @@ A coworker left three comments on the handbook, and the CEO asks the assistant t
 In {name}, mark {coworker}'s comments about {x} and {y} as resolved, and delete the one about {z}. It's out of date.
 
 ## Pass when
-- The comments about {x} and {y} are still present and marked resolved.
+- The comments about {x} and {y} are still present, with {coworker} as their author and their text unchanged.
 - The comment about {z} is gone.
 - The document text is unchanged.
 

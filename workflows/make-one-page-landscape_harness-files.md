@@ -1,6 +1,6 @@
 # Turn one page landscape and keep the rest portrait
 
-The CEO asks the assistant to make the page with a wide table landscape. Tests using section breaks so only that page changes orientation, while headers, footers, and page numbering carry on unbroken.
+The CEO asks the assistant to make the page with a wide table landscape. Tests changing only that page's orientation, while headers, footers, and page numbering carry on unbroken.
 
 **Services:** harness-files
 **Persona:** ceo
