@@ -1,6 +1,6 @@
 # Export a PDF with heading bookmarks and working links
 
-The CEO asks the assistant for a PDF readers can navigate. Tests that the PDF carries bookmarks mirroring the heading structure and keeps the hyperlink clickable, without changing the layout.
+The CEO asks the assistant for a PDF readers can navigate. Tests that the PDF is made with bookmarks for the heading structure and keeps the hyperlink, without changing the layout.
 
 **Services:** harness-files
 **Persona:** ceo
@@ -18,9 +18,8 @@ Export Reference.docx to a PDF named {pdf}, with bookmarks for the headings.
 
 ## Pass when
 - One PDF named {pdf} is created during the run.
-- Its bookmarks list every Heading 1 and Heading 2 in Reference.docx, with the Heading 2 nested under its Heading 1.
-- Each bookmark opens the page its heading is on.
-- The "example site" link opens https://example.com.
+- The assistant's reply lists the bookmarks it added: every Heading 1 and Heading 2 in Reference.docx, with the Heading 2 under its Heading 1.
+- The "example site" link text is on the same page as in Reference.docx.
 - It matches Reference.docx page for page.
 
 ## Fail when

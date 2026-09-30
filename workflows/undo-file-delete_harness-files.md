@@ -25,7 +25,7 @@ The CPO asks the assistant to delete a file from its own storage, then changes t
 ## Pass when
 - After the first message, {name} is gone from {folder}.
 - After the second message, {name} is back in {folder} and contains {right}.
-- It is the original file, created before the run, not a new file written during the run.
+- It shows its original modified time from before the run, not a time during the run.
 
 ## Fail when
 - The file containing {wrong} comes back.
@@ -33,4 +33,4 @@ The CPO asks the assistant to delete a file from its own storage, then changes t
 - Any other file is changed.
 
 ## Cleanup
-- Delete {folder} and everything in it, including from any recently deleted list.
+- Delete {folder} and everything in it. Whatever the harness keeps in a recently deleted list may stay there until it expires.

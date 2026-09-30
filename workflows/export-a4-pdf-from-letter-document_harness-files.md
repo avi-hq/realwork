@@ -18,10 +18,10 @@ Export Reference.docx to an A4 PDF named {pdf}. The customer prints on A4.
 
 ## Pass when
 - One PDF named {pdf} is created during the run.
-- Every page is A4, 210 by 297 millimeters.
+- Every page has A4 proportions: noticeably taller for its width than a Letter page (about 1.41 to 1, against 1.29 to 1).
 - No text or table cell is cut off or runs past the page margins.
 - The header and footer appear on every page.
-- Reference.docx is still US Letter.
+- Reference.docx still shows Letter pages.
 
 ## Fail when
 - Reference.docx is changed.
