@@ -1,9 +1,9 @@
 # Create a weekly recurring focus block
 
-The software engineer asks the assistant to block the same two hours every week for focused work. Tests creating one recurring event with the right day, times, and repeat rule.
+The CPO asks the assistant to block the same two hours every week for focused work. Tests creating one recurring event with the right day, times, and repeat rule.
 
 **Services:** google-calendar
-**Persona:** software-engineer
+**Persona:** cpo
 **Level:** 1
 **Frequency:** uncommon
 

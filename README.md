@@ -2,7 +2,7 @@
 
 A simple benchmark for AI assistants doing real business work in real tools.
 
-Simple means every file is markdown. There is no runner, no schema, no harness code, and no simulated apps. A workflow is a task written the way an employee would say it, plus a plain-English list of what must be true afterwards. You give the task to the assistant, look in the real mailbox, calendar, or files, and mark pass or fail.
+Simple means every file is markdown, apart from the starter files in `artifacts/`. There is no runner, no schema, no harness code, and no simulated apps. A workflow is a task written the way an employee would say it, plus a plain-English list of what must be true afterwards. You give the task to the assistant, look in the real mailbox, calendar, or files, and mark pass or fail.
 
 The assistant under test is the harness. It works for an employer: a test company on a real domain with real accounts. Any harness that can be connected to those accounts can run the same workflows.
 
@@ -12,6 +12,7 @@ config.world.example.md     the test company, its people, and the outside compan
 config.harness.example.md   the assistant under test: its services, how to connect, run, and reset it
 sequence.md                 which workflows are solo or shared, and the order they run in
 workflows/                  one file per workflow
+artifacts/                  the starter files workflows copy in: spreadsheets, PDFs, a CSV
 runs/                       one file per session's results
 ```
 
@@ -85,7 +86,7 @@ Move my {event} with {contact} to {new}.
 
 **Checking documents.** Check Word documents in Microsoft Word, the reference for how a `.docx` looks: styles, page setup, fields, list formatting, and tracked changes. Check PDFs in a viewer that shows page size, fonts, and bookmarks, such as Adobe Acrobat Reader. A PDF "matches" a document page for page when it has the same page count, each page starts and ends with the same content, and the headers, footers, and page numbers are the same as in Word.
 
-A harness with its own file storage (`harness-files`) is checked in that harness's own viewer, because the operator has no other way to open its files. Those workflows are written so every line can be seen on a rendered page: a heading by how it is set, a table of contents by its entries and page numbers, a PDF by its pages. What only Word or Acrobat expose, such as style names, field codes, list definitions, repeat-header settings, PDF/A metadata, font embedding, and bookmark trees, is not a criterion; where it matters, the assistant's own reply is what gets checked.
+A harness with its own file storage (`harness-files`) is checked in that harness's own viewer, because the operator has no other way to open its files. Those workflows are written so every line can be seen on a rendered page: a heading by how it is set, a table of contents by its entries and page numbers, a PDF by its pages, a spreadsheet by its cells, their formats and highlighting, and the formula bar. A chart the viewer does not draw is checked in a PDF of its sheet. What only Word or Acrobat expose, such as style names, field codes, list definitions, repeat-header settings, PDF/A metadata, font embedding, and bookmark trees, is not a criterion; where it matters, the assistant's own reply is what gets checked.
 
 **Redlines and comments.** A redline means Word's own tracked changes, and a comment means a Word comment. Strikethrough, underline, or colored text is not a redline, and a note typed into the body is not a comment. Check them in Word's review tools: each tracked change's type, text, author, and whether it is accepted; each comment's text, author, the exact text it is attached to, its replies, and whether it is resolved. When a Setup step makes a change as someone else, set Word's user name to that person's full name first.
 
@@ -168,6 +169,24 @@ Then open each account and check that it is empty.
 - A page break, then Heading 1 "Appendix" with one paragraph.
 - Exactly three pages in Word, with the Appendix alone on page 3.
 
+## Artifacts
+
+`artifacts/` holds the files workflows start from. They are generated, not downloaded, so they never change between sessions and contain nothing real. A workflow's Setup adds a copy of the one it needs to the assistant's storage under the run's own file name, and its Cleanup deletes that copy. An artifact itself is never edited.
+
+| File | What it is |
+|---|---|
+| `budget.xlsx` | A cloud budget: a Budget sheet of monthly costs by category with formula totals, an Expenses sheet of line items with a Total row, and a Summary sheet that reads both |
+| `broken-formulas.xlsx` | A six-month forecast with two `#DIV/0!` errors and a `#REF!` revenue total |
+| `card-export.csv` | A card export with leading-zero IDs, US dates, and amounts written with commas |
+| `company-report.pdf` | A ten-page report with one distinct fact on each page |
+| `scanned-receipt.pdf` | A scanned receipt: one page that is a picture, with no text in it |
+| `vendor-tax-form.pdf` | A fillable vendor tax form whose fields have coded names and printed labels |
+| `new-hire-form.pdf` | A printed form with labels and blank lines, and no fields |
+| `contractor-agreement.pdf` | A two-page agreement with a COMPANY and a CONTRACTOR signature block |
+| `offer-letter.pdf` | A two-page offer letter |
+| `benefits-summary.pdf` | A three-page benefits summary whose page 2 shows sideways |
+| `personnel-record.pdf` | A two-page record with a made-up Social Security number on page 2 |
+
 ## Running
 
 `sequence.md` decides what runs and in what order. Nothing else does.
@@ -226,20 +245,21 @@ Check every workflow against this list before it goes in. Each line exists becau
 9. Pass and fail lines name one exact thing and are checkable in the service. "The email is professional" is not a line. "{contact}'s mailbox receives one email that names {time}" is. Write "during the run" when a count matters.
 10. At least one fail line covers a side effect: the wrong recipient, the wrong record, a changed event.
 11. Anything a workflow needs that its Setup does not create is in the Seed.
-12. A workflow reads the same for any employer and any provider. Write "document", not "Google Doc", and "mail", not "Gmail". File formats such as Word and PDF are fine to name.
-13. No two workflows test the same thing. The same action on different data is a duplicate.
-14. Every workflow is listed in `sequence.md` exactly once: under its persona's lane if solo, under Shared if not. A workflow missing from `sequence.md` never runs.
-15. A workflow is solo only if it touches nothing but its persona's accounts, its persona's harness storage, and outside people whose contact is that persona. A coworker used only as a name typed into a document does not count. Anything more makes it shared, and shared workflows stay few.
+12. A workflow that starts from a file copies it from `artifacts/` in its Setup, under the run's own name, and deletes the copy in Cleanup. Never point a workflow at an artifact itself or edit one. A new starter file goes in `artifacts/` and in the README's table.
+13. A workflow reads the same for any employer and any provider. Write "document", not "Google Doc", and "mail", not "Gmail". File formats such as Word and PDF are fine to name.
+14. No two workflows test the same thing. The same action on different data is a duplicate.
+15. Every workflow is listed in `sequence.md` exactly once: under its persona's lane if solo, under Shared if not. A workflow missing from `sequence.md` never runs.
+16. A workflow is solo only if it touches nothing but its persona's accounts, its persona's harness storage, and outside people whose contact is that persona. A coworker used only as a name typed into a document does not count. Anything more makes it shared, and shared workflows stay few.
 
 **World**
 
-16. Never invent a domain. Every domain in `config.world.md` is one you own. `.example` belongs only in the example.
-17. An outside person is never on an employer's domain, and no two companies share a root domain. Subdomains of one root are still one root.
-18. Every outside person is a real account. No catch-all, forwarding, or alias that lets mail cross domains.
-19. Nothing about a person, company, or domain lives outside `config.world.md`. Nothing about the assistant lives outside `config.harness.md`.
-20. Facts name roles, not employers, so they hold at every employer.
+17. Never invent a domain. Every domain in `config.world.md` is one you own. `.example` belongs only in the example.
+18. An outside person is never on an employer's domain, and no two companies share a root domain. Subdomains of one root are still one root.
+19. Every outside person is a real account. No catch-all, forwarding, or alias that lets mail cross domains.
+20. Nothing about a person, company, or domain lives outside `config.world.md`. Nothing about the assistant lives outside `config.harness.md`.
+21. Facts name roles, not employers, so they hold at every employer.
 
 **Changing anything**
 
-21. Renaming or removing anything means searching the whole repo for the old value and fixing every hit.
-22. Do not add documents. Rules go in this README, the order in `sequence.md`, the world in `config.world.md`, the assistant in `config.harness.md`. If it does not fit, it is not simple enough yet.
+22. Renaming or removing anything means searching the whole repo for the old value and fixing every hit.
+23. Do not add documents. Rules go in this README, the order in `sequence.md`, starter files in `artifacts/`, the world in `config.world.md`, the assistant in `config.harness.md`. If it does not fit, it is not simple enough yet.

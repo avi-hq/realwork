@@ -22,7 +22,7 @@ Owen Blackwood, Chief Product Officer. owen@fernwood.example.
 
 #### hr
 Priya Raman, Head of People. priya@fernwood.example.
-- Job descriptions and the Employee Handbook live in the People folder.
+- The Employee Handbook lives in the People folder.
 - Mateo Alvarez is the newest hire.
 
 #### software-engineer

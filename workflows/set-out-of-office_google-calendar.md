@@ -1,9 +1,9 @@
 # Set out of office for a date range
 
-The head of people asks the assistant to mark them out of office for several days. Tests creating one out-of-office block over the whole range, not one event per day.
+The CPO asks the assistant to mark them out of office for several days. Tests creating one out-of-office block over the whole range, not one event per day.
 
 **Services:** google-calendar
-**Persona:** hr
+**Persona:** cpo
 **Level:** 1
 **Frequency:** uncommon
 
