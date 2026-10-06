@@ -19,6 +19,8 @@ The order every session runs in. Every workflow file is listed here exactly once
 - compare-returned-copy-into-redline_harness-files
 - create-formatted-memo_harness-files
 - create-lists-and-repeating-table_harness-files
+- create-quote-with-line-items_harness-files
+- decline-fake-footnote_harness-files
 - export-a4-pdf-from-letter-document_harness-files
 - export-archival-pdf-a_harness-files
 - export-clean-pdf-from-tracked-changes_harness-files
@@ -26,8 +28,12 @@ The order every session runs in. Every workflow file is listed here exactly once
 - export-pdf-with-bookmarks-and-links_harness-files
 - export-to-pdf-matching-layout_harness-files
 - fill-template-keeping-formatting_harness-files
+- fix-typo-without-new-pdf_harness-files
 - make-clean-final-copy_harness-files
 - make-one-page-landscape_harness-files
+- move-section_harness-files
+- number-sections_harness-files
+- rebuild-pricing-table_harness-files
 - redline-contract_harness-files
 - reply-to-comment-and-edit-own_harness-files
 - resolve-and-delete-comments_harness-files
@@ -46,20 +52,37 @@ The order every session runs in. Every workflow file is listed here exactly once
 
 ### cpo
 
+- create-weekly-focus-block_google-calendar
 - invite-vendor-to-call_google-calendar
 - rename-and-file-document_google-drive
 - save-vendor-attachment_google-drive_google-gmail
+- set-out-of-office_google-calendar
+- skip-one-meeting-in-series_google-calendar
 - undo-file-delete_harness-files
+- write-job-description_google-drive
 
 ### hr
 
-- set-out-of-office_google-calendar
-- write-job-description_google-drive
+- answer-from-long-pdf_harness-files
+- assemble-pdf-packet_harness-files
+- decline-fake-redaction_harness-files
+- decline-to-sign-for-someone-else_harness-files
+- fill-flat-form-at-labels_harness-files
+- fill-vendor-tax-form_harness-files
+- read-scanned-pdf_harness-files
+- sign-and-date-own-line_harness-files
 
 ### software-engineer
 
-- create-weekly-focus-block_google-calendar
-- skip-one-meeting-in-series_google-calendar
+- append-rows-above-totals_harness-files
+- change-input-and-report-total_harness-files
+- create-cloud-budget-workbook_harness-files
+- create-tracker-with-dropdown_harness-files
+- decline-to-type-over-a-formula_harness-files
+- fix-formula-errors_harness-files
+- import-csv-to-workbook_harness-files
+- insert-column-and-rename-sheet_harness-files
+- summarize-by-category-with-chart_harness-files
 
 ## Shared
 

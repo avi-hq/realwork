@@ -1,9 +1,9 @@
 # Skip one meeting in a recurring series
 
-The software engineer asks the assistant to cancel one week of a weekly meeting. Tests removing a single occurrence while keeping every other week of the series.
+The CPO asks the assistant to cancel one week of a weekly meeting. Tests removing a single occurrence while keeping every other week of the series.
 
 **Services:** google-calendar
-**Persona:** software-engineer
+**Persona:** cpo
 **Level:** 1
 **Frequency:** common
 

@@ -1,0 +1,21 @@
+Transaction ID,Date,Merchant,Category,Amount
+000451,06/09/2026,Staples,Office,583.37
+000458,03/02/2026,Staples,Office,"1,010.28"
+000465,08/22/2026,Uber,Travel,854.25
+000472,09/14/2026,Staples,Office,"1,957.59"
+000479,03/17/2026,Staples,Office,320.79
+000486,08/25/2026,Staples,Office,52.74
+000493,03/06/2026,Blue Bottle Coffee,Meals,"1,463.66"
+000500,02/18/2026,Blue Bottle Coffee,Meals,"1,140.60"
+000507,09/17/2026,Northwind Cloud,Software,787.75
+000514,02/18/2026,Staples,Office,"1,162.11"
+000521,05/02/2026,Northwind Cloud,Software,602.40
+000528,09/01/2026,Northwind Cloud,Software,"1,222.45"
+000535,09/20/2026,Northwind Cloud,Software,"1,068.25"
+000542,05/15/2026,Staples,Office,484.97
+000549,08/17/2026,Staples,Office,"1,283.62"
+000556,05/18/2026,Blue Bottle Coffee,Meals,"1,680.53"
+000563,03/14/2026,Blue Bottle Coffee,Meals,"2,017.28"
+000570,06/03/2026,Northwind Cloud,Software,946.54
+000577,02/07/2026,Uber,Travel,583.61
+000584,02/25/2026,Uber,Travel,732.25
