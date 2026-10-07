@@ -19,8 +19,8 @@ Reply to {contact} with three times I'm free next week.
 
 ## Pass when
 - {contact}'s mailbox receives one reply in the {subject} thread during the run.
-- The reply names three times next week.
-- None of the three overlaps an event on the persona's calendar.
+- The reply names three times next week, each between 9 AM and 5 PM on a weekday in the world's time zone, and says which time zone they are in.
+- None of the three overlaps an event that shows the persona as busy.
 
 ## Fail when
 - Any event is created.
