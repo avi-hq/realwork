@@ -2,11 +2,13 @@
 
 EXAMPLE. Copy this file to `config.harness.md` and fill it in for the assistant under test. Keep it private: it holds sign-in details.
 
-**Services:** google-gmail, google-calendar, google-drive, google-contacts, harness-files
+**Services:** google-gmail, google-calendar, google-drive, google-contacts, harness-esign, harness-files
 
 ## Connect
 
 Once per employer. Each person signs in at https://avi.run with their employer account and connects Google when Avi asks. Set each person's Avi profile name to their full name, since Avi credits tracked changes and comments to it.
+
+For `harness-esign`, the vp-sales person connects a ShareFile e-signature (RightSignature) account opened under their own address, in the Drive app's settings under E-signature. Signing emails come from that account's owner. The plan must include e-signature.
 
 ## Run
 
@@ -22,4 +24,4 @@ Sign in at https://avi.run as each person and delete:
 - Every Avi task.
 - Anything Avi remembers between conversations.
 
-Keep Google connected.
+Keep Google and e-signature connected.

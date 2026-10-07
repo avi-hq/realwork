@@ -68,7 +68,7 @@ Move my {event} with {contact} to {new}.
 | google | `google-gmail`, `google-calendar`, `google-drive`, `google-contacts` |
 | microsoft | `microsoft-outlook`, `microsoft-calendar`, `microsoft-onedrive`, `microsoft-contacts` |
 
-`harness-files` is the one service that isn't a company's. It means the assistant's own file storage, for harnesses that have one.
+Two services aren't a company's. `harness-files` means the assistant's own file storage, for harnesses that have one. `harness-esign` means the e-signature service the harness sends documents through, whichever company runs it; signers get its emails at their own addresses.
 
 **Persona.** One of the five roles every employer has: `ceo`, `cpo`, `hr`, `software-engineer`, `vp-sales`. A solo workflow runs in its persona's lane.
 
@@ -80,17 +80,17 @@ Move my {event} with {contact} to {new}.
 
 **Setup.** What the operator creates before the task, acting as the persona, a coworker, or an outside person. Anything the workflow changes, moves, or deletes is created here, so no run touches the seeded world. `None.` when nothing is needed.
 
-**Task.** What the operator types, inputs filled in. Numbered messages are sent one at a time, each after the assistant says it has finished the one before.
+**Task.** What the operator types, inputs filled in. Numbered messages are sent one at a time, each after the assistant says it has finished the one before. A numbered step that starts with "As" is done, not typed: the operator acts as that person, such as signing from a signing email, then sends the next message.
 
 **Pass when** and **Fail when.** Each line is binary, checkable in the real service, and names the exact person, thread, event, file, or contact. Never a line about tone or quality. Lines are judged on what changed during the run. A workflow passes only when every pass line holds and no fail line fires.
 
 **Checking documents.** Check Word documents in Microsoft Word, the reference for how a `.docx` looks: styles, page setup, fields, list formatting, and tracked changes. Check PDFs in a viewer that shows page size, fonts, and bookmarks, such as Adobe Acrobat Reader. A PDF "matches" a document page for page when it has the same page count, each page starts and ends with the same content, and the headers, footers, and page numbers are the same as in Word.
 
-A harness with its own file storage (`harness-files`) is checked in that harness's own viewer, because the operator has no other way to open its files. Those workflows are written so every line can be seen on a rendered page: a heading by how it is set, a table of contents by its entries and page numbers, a PDF by its pages, a spreadsheet by its cells, their formats and highlighting, and the formula bar. A chart the viewer does not draw is checked in a PDF of its sheet. What only Word or Acrobat expose, such as style names, field codes, list definitions, repeat-header settings, PDF/A metadata, font embedding, and bookmark trees, is not a criterion; where it matters, the assistant's own reply is what gets checked.
+A harness with its own file storage (`harness-files`) is checked in that harness's own viewer, because the operator has no other way to open its files. Those workflows are written so every line can be seen on a rendered page: a heading by how it is set, a table of contents by its entries and page numbers, a PDF by its pages, a spreadsheet by its cells, their formats and highlighting, and the formula bar. A chart the viewer does not draw is checked in a PDF of its sheet. A signature request is checked on the signing page each signer opens, where every box shows on the page it was placed on, and in the signed copy. What only Word or Acrobat expose, such as style names, field codes, list definitions, repeat-header settings, PDF/A metadata, font embedding, and bookmark trees, is not a criterion; where it matters, the assistant's own reply is what gets checked.
 
 **Redlines and comments.** A redline means Word's own tracked changes, and a comment means a Word comment. Strikethrough, underline, or colored text is not a redline, and a note typed into the body is not a comment. Check them in Word's review tools: each tracked change's type, text, author, and whether it is accepted; each comment's text, author, the exact text it is attached to, its replies, and whether it is resolved. When a Setup step makes a change as someone else, set Word's user name to that person's full name first.
 
-**Cleanup.** What the operator undoes after judging, pass or fail, even if the run was stopped. It removes everything the run and its Setup created or changed: delete events without notifying attendees, trash emails in every mailbox that holds a copy, discard drafts, delete files, folders, contacts, and labels, and put back anything renamed, moved, archived, or edited. Workflows run one after another in a session, so anything left behind changes the next one.
+**Cleanup.** What the operator undoes after judging, pass or fail, even if the run was stopped. It removes everything the run and its Setup created or changed: delete events without notifying attendees, trash emails in every mailbox that holds a copy, discard drafts, cancel signature requests still open, delete files, folders, contacts, and labels, and put back anything renamed, moved, archived, or edited. Workflows run one after another in a session, so anything left behind changes the next one.
 
 ## World
 
@@ -120,7 +120,7 @@ The operator is whoever drives the harness, a human or an agent in a VM. The ope
 
 `config.harness.md` describes the assistant under test: its name, the services it can act in, how to connect an employer to it, how to give it a task, and what to clear in it on Reset. Sign-in details live only here. The repo ships an example for Avi.
 
-A workflow runs only when the harness and the employer both have every service it needs. `harness-files` needs only the harness. Anything else is skipped. Skips count against coverage, never against pass rate.
+A workflow runs only when the harness and the employer both have every service it needs. `harness-files` and `harness-esign` need only the harness. Anything else is skipped. Skips count against coverage, never against pass rate.
 
 ## Setup
 
@@ -182,6 +182,7 @@ Then open each account and check that it is empty.
 | `scanned-receipt.pdf` | A scanned receipt: one page that is a picture, with no text in it |
 | `vendor-tax-form.pdf` | A fillable vendor tax form whose fields have coded names and printed labels |
 | `new-hire-form.pdf` | A printed form with labels and blank lines, and no fields |
+| `account-application.pdf` | A three-page customer account application: text lines and checkboxes, initials at the foot of pages 1 and 2 and beside an auto-renewal clause, and a CUSTOMER and a PROVIDER signature block |
 | `contractor-agreement.pdf` | A two-page agreement with a COMPANY and a CONTRACTOR signature block |
 | `offer-letter.pdf` | A two-page offer letter |
 | `benefits-summary.pdf` | A three-page benefits summary whose page 2 shows sideways |
