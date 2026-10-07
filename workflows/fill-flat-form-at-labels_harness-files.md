@@ -24,13 +24,13 @@ The head of people asks the assistant to fill a printed form whose blanks are ju
 Fill out {name}: full name {full}, preferred name {preferred}, start date {start}, department {department}, manager {manager}, emergency contact {emergency}, emergency phone {phone}.
 
 ## Pass when
-- A filled copy of the form is created during the run, and {name} itself is still blank.
-- In the copy, each value sits on the line after its own label, from Full name to Emergency phone.
+- The form is filled, either in {name} itself or in one copy of it made during the run. The filled form is called the form below.
+- In the form, each value sits on the line after its own label, from Full name to Emergency phone.
 - No value overlaps a label, another value, or any printed text.
 
 ## Fail when
 - A value lands on the wrong line.
-- Any other file is created, changed, or deleted.
+- Any other file is created, changed, or deleted, or more than one copy is made.
 
 ## Cleanup
 - Delete every file the run and its Setup created.

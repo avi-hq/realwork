@@ -82,7 +82,9 @@ Move my {event} with {contact} to {new}.
 
 **Task.** What the operator types, inputs filled in. Numbered messages are sent one at a time, each after the assistant says it has finished the one before.
 
-**Pass when** and **Fail when.** Each line is binary, checkable in the real service, and names the exact person, thread, event, file, or contact. Never a line about tone or quality. Lines are judged on what changed during the run. A workflow passes only when every pass line holds and no fail line fires.
+**Pass when** and **Fail when.** Each line is binary, checkable in the real service, and names the exact person, thread, event, file, or contact. Never a line about tone or quality. Lines are judged on what changed during the run. A workflow passes only when every pass line holds and no fail line fires. Nothing else is judged.
+
+A line about anything else changing, such as "Any other file is created, changed, or deleted", is judged from what the operator writes down just before the task and again after it: the persona's files with their sizes and modified times, the persona's events from today to the end of next week, and the persona's contacts. A file whose size and modified time did not change is unchanged.
 
 **Checking documents.** Check Word documents in Microsoft Word, the reference for how a `.docx` looks: styles, page setup, fields, list formatting, and tracked changes. Check PDFs in a viewer that shows page size, fonts, and bookmarks, such as Adobe Acrobat Reader. A PDF "matches" a document page for page when it has the same page count, each page starts and ends with the same content, and the headers, footers, and page numbers are the same as in Word.
 
@@ -196,10 +198,11 @@ Then open each account and check that it is empty.
 3. **Solo phase.** Every lane runs at the same time, each with its own operator signed in only as that lane's persona. Inside a lane, run each workflow once, one at a time, in the order `sequence.md` lists:
    1. Pick its inputs and write them down.
    2. Do its Setup.
-   3. Give the task as the persona, in a new conversation.
-   4. Judge every pass and fail line.
-   5. Do its Cleanup, whatever the result.
-4. **Shared phase.** After every lane has finished, run the Shared workflows one at a time, in order, the same five steps each. No lane is running, so their lines can count anything on any account.
+   3. Write down the persona's files, events, and contacts, as Pass when and Fail when describe.
+   4. Give the task as the persona, in a new conversation.
+   5. Judge every pass and fail line.
+   6. Do its Cleanup, whatever the result.
+4. **Shared phase.** After every lane has finished, run the Shared workflows one at a time, in order, the same six steps each. No lane is running, so their lines can count anything on any account.
 5. **Reset after.** Clear every account.
 6. **Record** the session in `runs/YYYY-MM-DD-harness-employer.md`. Copy `sequence.md`'s headings and workflow order, and fill in one row per workflow. Every workflow in `sequence.md` gets a row, run or skipped, so a missing row means a missed workflow. Time is minutes and seconds from sending the task to the assistant saying it is done, or to the operator stopping it. Report pass rate, coverage, and median time by level, by service, by lane, and by employer.
 
@@ -215,7 +218,7 @@ Then open each account and check that it is empty.
 | Workflow | Inputs | Time | Result | Failed line |
 |---|---|---|---|---|
 | draft-customer-reply-without-sending_google-gmail | Dana, Renewal question | 0:52 | pass | |
-| offer-customer-open-times_google-calendar_google-gmail | Ravi | 2:15 | fail | None of the three overlaps an event on the persona's calendar. |
+| offer-customer-open-times_google-calendar_google-gmail | Ravi | 2:15 | fail | None of the three overlaps an event that shows the persona as busy. |
 
 ## Shared
 
