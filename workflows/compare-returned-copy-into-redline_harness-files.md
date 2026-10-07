@@ -15,8 +15,8 @@ A customer sent back an edited contract without tracking changes, and the CEO as
 
 ## Setup
 - Create {sent}: a two-page services agreement with numbered clauses, in Microsoft Word, with tracking off.
-- Copy it to {returned}. In {returned}, with tracking off, change one phrase, delete one sentence, and add one sentence. Write down all three.
-- Save both and add it to the assistant's own file storage, not through chat.
+- Copy it to {returned}. In {returned}, with tracking off, replace one phrase with different words (some words removed and others typed in their place, not words only added), delete one sentence, and add one sentence. Write down all three.
+- Save both and add them to the assistant's own file storage, not through chat.
 
 ## Task
 {contact} sent back {returned} without tracking their changes. Make a redline of it against {sent}, named {redline}.
