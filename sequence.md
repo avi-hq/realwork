@@ -49,6 +49,9 @@ The order every session runs in. Every workflow file is listed here exactly once
 - reschedule-customer-meeting_google-calendar
 - send-customer-document_google-drive_google-gmail
 - update-contact-title-from-email_google-contacts_google-gmail
+- send-account-application-for-signature_harness-esign_harness-files
+- write-renewal-order-for-countersignature_harness-esign_harness-files
+- cancel-signature-request_harness-esign_harness-files
 
 ### cpo
 
