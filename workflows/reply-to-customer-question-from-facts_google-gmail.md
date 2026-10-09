@@ -1,6 +1,6 @@
 # Reply to a customer's question from company facts
 
-A customer has emailed a question, and the VP Sales asks the assistant to reply. Tests finding the right thread and the right fact without being told either, then answering in that thread without offering anything extra, like a discount.
+A customer has emailed a question, and the VP Sales asks the assistant to reply. Tests finding the right thread without being told it, asking the persona for a fact that is not written down anywhere, then answering in that thread without offering anything extra, like a discount.
 
 **Services:** google-gmail
 **Persona:** vp-sales

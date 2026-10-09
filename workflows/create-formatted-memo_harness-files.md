@@ -16,7 +16,7 @@ The CEO asks the assistant to write a one-page memo as a Word document with a gi
 None.
 
 ## Task
-Write a short memo about {topic} as a Word document named {name}. US Letter, portrait, 1-inch margins, Calibri 11 point body text. Put the title in the Title style and each section heading in Heading 1. Put {company} in the header, right-aligned, and "Page X of Y" in the footer, centered.
+Write a one-page memo about {topic} as a Word document named {name}. US Letter, portrait, 1-inch margins, Calibri 11 point body text. Put the title in the Title style and each section heading in Heading 1. Put {company} in the header, right-aligned, and "Page X of Y" in the footer, centered.
 
 ## Pass when
 - One document named {name} is created during the run.
