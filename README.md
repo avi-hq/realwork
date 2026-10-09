@@ -129,7 +129,7 @@ A workflow runs only when the harness and the employer both have every service i
 Once.
 
 1. **Domains.** Copy `config.world.example.md` to `config.world.md`. Register one domain per employer and one per external company, on mixed top-level domains as real companies would. Write them in.
-2. **Employer accounts.** For each employer, a Google Workspace or Microsoft 365 tenant on its domain, in the time zone in `config.world.md`. One account per person.
+2. **Employer accounts.** For each employer, a Google Workspace or Microsoft 365 tenant on its domain, in the time zone in `config.world.md`. One account per person, its calendar set to that time zone too.
 3. **Outside accounts.** Add every external domain to a tenant, the employer's or a separate one. One account per outside person, in an organizational unit named External.
 4. **Harness.** Connect each employer to the harness, per `config.harness.md`. Each person's name in the harness is their full name from `config.world.md`, because tracked changes and comments are credited to it.
 5. **Reference document.** Build `Reference.docx` in Microsoft Word, exactly as described under Reference document below, and keep it with your private config files.
