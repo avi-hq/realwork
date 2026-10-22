@@ -15,6 +15,7 @@ The order every session runs in. Every workflow file is listed here exactly once
 - add-table-of-contents_harness-files
 - address-comments-with-tracked-edits_harness-files
 - apply-heading-styles-to-messy-document_harness-files
+- build-deck-then-export-when-asked_google-drive_harness-files
 - comment-on-specific-phrases_harness-files
 - compare-returned-copy-into-redline_harness-files
 - create-formatted-memo_harness-files
@@ -39,9 +40,12 @@ The order every session runs in. Every workflow file is listed here exactly once
 - resolve-and-delete-comments_harness-files
 - revise-pending-suggestion_harness-files
 - update-document-and-its-pdf_harness-files
+- write-speaker-notes_google-drive
 
 ### vp-sales
 
+- add-slide-matching-deck_google-drive
+- create-deck-from-template_google-drive
 - draft-customer-reply-without-sending_google-gmail
 - label-and-archive-company-threads_google-gmail
 - offer-customer-open-times_google-calendar_google-gmail
@@ -55,10 +59,12 @@ The order every session runs in. Every workflow file is listed here exactly once
 - create-weekly-focus-block_google-calendar
 - invite-vendor-to-call_google-calendar
 - rename-and-file-document_google-drive
+- reorder-and-hide-slides_google-drive
 - save-vendor-attachment_google-drive_google-gmail
 - set-out-of-office_google-calendar
 - skip-one-meeting-in-series_google-calendar
 - undo-file-delete_harness-files
+- update-figure-across-deck_google-drive
 - write-job-description_google-drive
 
 ### hr
@@ -88,6 +94,7 @@ The order every session runs in. Every workflow file is listed here exactly once
 
 - add-coworker-to-meeting_google-calendar
 - add-email-sender-to-contacts_google-contacts_google-gmail
+- address-deck-comments_google-drive
 - confirm-tomorrows-outside-meetings_google-calendar_google-gmail
 - decline-meeting-invitation_google-calendar
 - find-time-with-two-coworkers_google-calendar
