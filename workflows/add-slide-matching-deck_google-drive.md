@@ -1,4 +1,4 @@
-# Add a slide that matches the rest of the deck
+# Add a slide that matches the rest of a deck
 
 The VP Sales asks the assistant to add a slide in a given place in a presentation, looking like the slides around it. Tests placing the slide, building it from the deck's own layout, and keeping its text inside its boxes.
 

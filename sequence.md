@@ -44,7 +44,7 @@ The order every session runs in. Every workflow file is listed here exactly once
 
 ### vp-sales
 
-- add-matching-slide_google-drive
+- add-slide-matching-deck_google-drive
 - create-deck-from-template_google-drive
 - draft-customer-reply-without-sending_google-gmail
 - label-and-archive-company-threads_google-gmail
