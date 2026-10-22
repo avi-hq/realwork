@@ -88,7 +88,7 @@ A line about anything else changing, such as "Any other file is created, changed
 
 **Checking documents.** Check Word documents in Microsoft Word, the reference for how a `.docx` looks: styles, page setup, fields, list formatting, and tracked changes. Check PDFs in a viewer that shows page size, fonts, and bookmarks, such as Adobe Acrobat Reader. A PDF "matches" a document page for page when it has the same page count, each page starts and ends with the same content, and the headers, footers, and page numbers are the same as in Word.
 
-A harness with its own file storage (`harness-files`) is checked in that harness's own viewer, because the operator has no other way to open its files. Those workflows are written so every line can be seen on a rendered page: a heading by how it is set, a table of contents by its entries and page numbers, a PDF by its pages, a spreadsheet by its cells, their formats and highlighting, and the formula bar. A chart the viewer does not draw is checked in a PDF of its sheet. What only Word or Acrobat expose, such as style names, field codes, list definitions, repeat-header settings, PDF/A metadata, font embedding, and bookmark trees, is not a criterion; where it matters, the assistant's own reply is what gets checked.
+A harness with its own file storage (`harness-files`) is checked in that harness's own viewer, because the operator has no other way to open its files. Those workflows are written so every line can be seen on a rendered page: a heading by how it is set, a table of contents by its entries and page numbers, a PDF by its pages, a spreadsheet by its cells, their formats and highlighting, and the formula bar, a deck by its slides and the selected slide's speaker notes. A chart the viewer does not draw is checked in a PDF of its sheet. What only Word or Acrobat expose, such as style names, field codes, list definitions, repeat-header settings, PDF/A metadata, font embedding, and bookmark trees, is not a criterion; where it matters, the assistant's own reply is what gets checked.
 
 **Redlines and comments.** A redline means Word's own tracked changes, and a comment means a Word comment. Strikethrough, underline, or colored text is not a redline, and a note typed into the body is not a comment. Check them in Word's review tools: each tracked change's type, text, author, and whether it is accepted; each comment's text, author, the exact text it is attached to, its replies, and whether it is resolved. When a Setup step makes a change as someone else, set Word's user name to that person's full name first.
 
@@ -188,6 +188,9 @@ Then open each account and check that it is empty.
 | `offer-letter.pdf` | A two-page offer letter |
 | `benefits-summary.pdf` | A three-page benefits summary whose page 2 shows sideways |
 | `personnel-record.pdf` | A two-page record with a made-up Social Security number on page 2 |
+| `quarterly-review.pptx` | A six-slide business review: a title slide, Highlights with a speaker note, a Revenue by region column chart with labelled Q2 and Q3 bars, a Pipeline table, Next quarter in two columns, and a hidden Appendix |
+| `qbr-template.pptx` | A four-slide business review template whose text is placeholders in double braces, such as `{{customer}}` and `{{renewal_date}}` |
+| `crowded-deck.pptx` | A four-slide sales kickoff whose third slide lists twelve priorities, more than fit on it |
 
 ## Running
 

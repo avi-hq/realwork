@@ -42,6 +42,14 @@ The order every session runs in. Every workflow file is listed here exactly once
 
 ### vp-sales
 
+- answer-question-from-deck_harness-files
+- create-customer-deck-from-brief_harness-files
+- add-slide-matching-deck_harness-files
+- update-chart-with-new-quarter_harness-files
+- fill-template-deck-asking-for-missing_harness-files
+- write-speaker-notes_harness-files
+- split-crowded-slide_harness-files
+- export-deck-to-pdf-without-hidden-slides_harness-files
 - draft-customer-reply-without-sending_google-gmail
 - label-and-archive-company-threads_google-gmail
 - offer-customer-open-times_google-calendar_google-gmail
