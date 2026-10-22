@@ -17,7 +17,7 @@ The VP of sales asks the assistant to write what to say for each slide of a deck
 Write speaker notes for every slide in {name} that isn't hidden: two or three sentences each on what I should say. Keep the note that's already on Highlights.
 
 ## Pass when
-- Each of the five slides that are not hidden has speaker notes of two or three sentences that mention something shown on that slide.
+- Each of the five slides that are not hidden has two or three new sentences of speaker notes that mention something shown on that slide (on Highlights, besides the note it already had).
 - The Highlights slide's notes still include "Open with the revenue number."
 - No slide shows any new text on the slide itself.
 

@@ -18,18 +18,17 @@ The VP of sales asks the assistant for a short deck for a customer meeting from 
 None.
 
 ## Task
-Make a deck named {name} for our meeting with {customer}: a title slide, a slide on their account ({seats} seats), a chart of active users by quarter ({usage}), and a slide asking for {ask}.
+Make a deck named {name} for our meeting with {customer}: a title slide, a slide on their account ({seats} seats), a chart of active users by quarter ({usage}) with the numbers on the bars, and a slide asking for {ask}.
 
 ## Pass when
 - One deck named {name} is created during the run.
 - Its first slide is a title slide that names {customer}, and it has at least three more slides.
 - Every slide after the first has a title.
-- One slide shows a chart with one bar or point for each of the four quarters, labelled with the quarters, at the counts in {usage}.
+- One slide shows a chart with one bar for each of the four quarters, labelled with the quarters, each bar labelled with its count from {usage}.
 - One slide names {ask}.
 - On every slide, no text is cut off, runs past the edge of the slide, or overlaps other text.
 
 ## Fail when
-- The chart is missing, or shows other numbers.
 - Any other file is created, changed, or deleted.
 
 ## Cleanup

@@ -23,6 +23,7 @@ In {name}, add a slide right after Pipeline titled {title}, with these points: {
 - Its title reads {title}, in the same place, font, and size as the Highlights slide's title.
 - It shows the three points of {points} as bullets, in the same font and size as the Highlights slide's bullets.
 - No text on it is cut off or runs past the edge of the slide.
+- The new slide has no speaker notes copied from another slide.
 
 ## Fail when
 - Any other slide's text, chart, or table changes.
